@@ -1,0 +1,1027 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+commit 4cfe846dc73043fc633510eeb37f9f0384007dd9
+Author: alan <alan@wireless-tag.com>
+Date:   Thu May 13 11:10:08 2021 +0800
+
+    sstar: update to TAKOYAKI_DLS00V008_MP
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+U-Boot 2015.01 (Feb 09 2021 - 10:07:00)
+
+Version: I2g136e681
+       Watchdog enabled
+DRAM:  
+WARNING: Caches not enabled
+SPINAND: _MDrv_SPINAND_GET_INFO: Found SPINAND INFO 
+(0xCD) (0xEB) (0x11) 
+SPINAND: board_nand_init: CIS contains part info
+256 MiB
+MMC:   MStar SD/MMC: 0
+In:    serial
+Out:   serial
+Err:   serial
+Net:   MAC Address 00:30:1B:BA:02:DB
+Auto-Negotiation...
+Link Status Speed:100 Full-duplex:1
+sstar_emac
+gpio debug MHal_GPIO_Pad_Set: pin=4
+gpio[4] is 1
+gpio debug MHal_GPIO_Pad_Set: pin=18
+gpio[18] is 1
+
+NAND read: device 0 offset 0x4c0000, size 0x60000
+Time:87189 us, speed:4509 KB/s
+ 393216 bytes read: OK
+gpio debug MHal_GPIO_Pad_Set: pin=71
+gpio[71] is 0
+UBI: parsing mtd_dev string 'mtd=10'
+UBI: attaching mtd1 to ubi0
+UBI: scanning is finished
+skip erase
+skip write
+skip erase
+skip write
+UBI: attached mtd1 (name "mtd=10", size 48 MiB) to ubi0
+UBI: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+UBI: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+UBI: VID header offset: 2048 (aligned 2048), data offset: 4096
+UBI: good PEBs: 384, bad PEBs: 0, corrupted PEBs: 0
+UBI: user volume: 3, internal volumes: 1, max. volumes count: 128
+UBI: max/mean erase counter: 7/3, WL threshold: 4096, image sequence number: 1264728131
+UBI: available PEBs: 0, total reserved PEBs: 384, PEBs reserved for bad PEB handling: 40
+Read 0 bytes from volume kernel to 22000000
+No size specified -> Using max size (2031616)
+gpio debug MHal_GPIO_Pad_Set: pin=71
+gpio[71] is 1
+##  Booting kernel from Legacy Image at 22000000 ...
+   Image Name:   MVX4##I2M#g4cfe846KL_LX409##[BR:
+   Image Type:   ARM Linux Kernel Image (lzma compressed)
+   Data Size:    1949540 Bytes = 1.9 MiB
+   Load Address: 20008000
+   Entry Point:  20008000
+   Verifying Checksum ... OK
+-usb_stop(USB_PORT0)
+-usb_stop(USB_PORT1)
+-usb_stop(USB_PORT2)
+   Uncompressing Kernel Image ... 
+[XZ] !!!reserved 0x21000000 length=0x 1000000 for xz!!
+   XZ: uncompressed size=0x3e7000, ret=7
+OK
+atags:0x20000000
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.9.84 (gwind@gwind-P5820T) (gcc version 8.2.1 20180802 (GNU Toolchain for the A-profile Arch1
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] early_atags_to_fdt() success
+[    0.000000] OF: fdt:Machine model: INFINITY2M SSC011A-S01A-S By Wind
+[    0.000000] LXmem is 0x7f00000 PHYS_OFFSET is 0x20000000
+[    0.000000] Add mem start 0x20000000 size 0x7f00000!!!!
+[    0.000000] 
+[    0.000000] LX_MEM  = 0x20000000, 0x7f00000
+[    0.000000] LX_MEM2 = 0x0, 0x0
+[    0.000000] LX_MEM3 = 0x0, 0x0
+[    0.000000] EMAC_LEN= 0x0
+[    0.000000] DRAM_LEN= 0x0
+[    0.000000] deal_with_reserved_mmap memblock_reserve success mmap_reserved_config[0].reserved_start=
+[    0.000000] 0x27c00000
+[    0.000000] 
+[    0.000000] deal_with_reserve_mma_heap memblock_reserve success mma_config[0].reserved_start=
+[    0.000000] 0x26c00000
+[    0.000000] 
+[    0.000000] cma: Reserved 2 MiB at 0x26a00000
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] percpu: Embedded 13 pages/cpu @c68bf000 s21016 r8192 d24040 u53248
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 28162
+[    0.000000] Kernel command line: wt_board=WT2022 console=ttyS0,115200 rootfstype=squashfs,ubifs rootwait=1 LX_MEM=0x7f0)
+[    0.000000] PID hash table entries: 512 (order: -1, 2048 bytes)
+[    0.000000] Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.000000] Memory: 103128K/113664K available (2309K kernel code, 215K rwdata, 1176K rodata, 156K init, 152K bss, 8488K)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xc8000000 - 0xff800000   ( 888 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xc7f00000   ( 127 MB)
+[    0.000000]     modules : 0xbf800000 - 0xc0000000   (   8 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc02496f0   (2310 kB)
+[    0.000000]       .init : 0xc0391000 - 0xc03b8000   ( 156 kB)
+[    0.000000]       .data : 0xc03b8000 - 0xc03edd98   ( 216 kB)
+[    0.000000]        .bss : 0xc03ef000 - 0xc04153fc   ( 153 kB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000]  Build-time adjustment of leaf fanout to 32.
+[    0.000000]  RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=2
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] ms_init_main_intc: np->name=ms_main_intc, parent=gic
+[    0.000000] ms_init_pm_intc: np->name=ms_pm_intc, parent=ms_main_intc
+[    0.000000] ss_init_gpi_intc: np->name=ms_gpi_intc, parent=ms_main_intc
+[    0.000000] Find CLK_cpupll_clk, hook ms_cpuclk_ops
+[    0.000000] arm_arch_timer: Architected cp15 timer(s) running at 6.00MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1623fa770, max_idle_ns: 440795202238 ns
+[    0.000005] sched_clock: 56 bits at 6MHz, resolution 166ns, wraps every 4398046511055ns
+[    0.000017] Switching to timer-based delay loop, resolution 166ns
+[    0.000381] Console: colour dummy device 80x30
+[    0.355279] console [ttyS0] enabled
+[    0.358770] Calibrating delay loop (skipped), value calculated using timer frequency.. 12.00 BogoMIPS (lpj=60000)
+[    0.369031] pid_max: default: 4096 minimum: 301
+[    0.373631] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.380184] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.387789] CPU: Testing write buffer coherency: ok
+[    0.392704] CPU0: update cpu_capacity 1024
+[    0.396641] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.402491] Setting up static identity map for 0x20008240 - 0x20008270
+[    0.612646] CPU1: update cpu_capacity 1024
+[    0.612652] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.612756] Brought up 2 CPUs
+[    0.625322] SMP: Total of 2 processors activated (24.00 BogoMIPS).
+[    0.631487] CPU: All CPU(s) started in SVC mode.
+[    0.636692] devtmpfs: initialized
+[    0.653827] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.661628] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.671357] futex hash table entries: 16 (order: -2, 1024 bytes)
+[    0.678077] NET: Registered protocol family 16
+[    0.683003] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.691609] 
+[    0.691609] 
+[    0.691609] Version : MVX4##I2M#g4cfe846KL_LX409##[BR:main]#XVM
+[    0.691609] 
+[    0.707356] GPIO: probe end[    0.710302] [ss_gpi_intc_domain_alloc] hw:42 -> v:44
+[    0.718736] [Padmux]reset Pad_47(reg 0x101e03; mask0x70) to GPIO(org: UART0_MODE_1)
+[    0.726645] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.734498] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.750081] usbcore: registered new interface driver usbfs
+[    0.755594] usbcore: registered new interface driver hub
+[    0.760864] usbcore: registered new device driver usb
+[    0.765978] Linux video capture interface: v2.00
+[    0.773771] clocksource: Switched to clocksource arch_sys_counter
+[    0.791804] NET: Registered protocol family 2
+[    0.796643] TCP established hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.803465] TCP bind hash table entries: 1024 (order: 2, 20480 bytes)
+[    0.809968] TCP: Hash tables configured (established 1024 bind 1024)
+[    0.816301] UDP hash table entries: 128 (order: 0, 6144 bytes)
+[    0.822086] UDP-Lite hash table entries: 128 (order: 0, 6144 bytes)
+[    0.828543] NET: Registered protocol family 1
+[    0.833059] hw perfevents: enabled with armv7_cortex_a7 PMU driver, 5 counters available
+[    0.843152] workingset: timestamp_bits=30 max_order=15 bucket_order=0
+[    0.858131] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.866817] io scheduler noop registered
+[    0.870582] io scheduler deadline registered (default)
+[    0.877582] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.877584] ehci monitor start running
+[    0.887700] Mstar_ehc_init version:20180309
+[    0.891952] Sstar-ehci-2 H.W init
+[    0.895216] Titania3_series_start_ehc start
+[    0.899364] [USB] config miu select [70] [e8] [ef] [ef]
+[    0.904616] [USB] enable miu lower bound address subtraction
+[    0.910243] [USB] init squelch level 0x2
+[    0.915177] [USB] no platform_data, device tree coming
+[    0.920156] [USB][EHC] dma coherent_mask 0xffffffffffffffff mask 0xffffffffffffffff
+[    0.927863] BC disable 
+[    0.930252] [USB] soc:Sstar-ehci-2 irq --> 39
+[    0.934625] Sstar-ehci-2 soc:Sstar-ehci-2: EHCI Host Controller
+[    0.940548] Sstar-ehci-2 soc:Sstar-ehci-2: new USB bus registered, assigned bus number 1
+[    0.948862] Sstar-ehci-2 soc:Sstar-ehci-2: irq 39, io mem 0xfd285000
+[    0.983934] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    0.990570] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.997807] usb usb1: Product: EHCI Host Controller
+[    1.002666] usb usb1: Manufacturer: Linux 4.9.84 ehci_hcd
+[    1.008076] usb usb1: SerialNumber: mstar
+[    1.012779] hub 1-0:1.0: USB hub found
+[    1.016433] hub 1-0:1.0: 1 port detected
+[    1.020738] Sstar-ehci-1 H.W init
+[    1.023917] Titania3_series_start_ehc start
+[    1.028068] [USB] config miu select [70] [e8] [ef] [ef]
+[    1.033288] [USB] enable miu lower bound address subtraction
+[    1.038976] [USB] init squelch level 0x2
+[    1.043869] [USB] no platform_data, device tree coming
+[    1.048849] [USB][EHC] dma coherent_mask 0xffffffffffffffff mask 0xffffffffffffffff
+[    1.056549] BC disable 
+[    1.058944] [USB] soc:Sstar-ehci-1 irq --> 38
+[    1.063299] Sstar-ehci-1 soc:Sstar-ehci-1: EHCI Host Controller
+[    1.069250] Sstar-ehci-1 soc:Sstar-ehci-1: new USB bus registered, assigned bus number 2
+[    1.077532] Sstar-ehci-1 soc:Sstar-ehci-1: irq 38, io mem 0xfd284800
+[    1.103913] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.110549] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.117801] usb usb2: Product: EHCI Host Controller
+[    1.122645] usb usb2: Manufacturer: Linux 4.9.84 ehci_hcd
+[    1.128114] usb usb2: SerialNumber: mstar
+[    1.132704] hub 2-0:1.0: USB hub found
+[    1.136357] hub 2-0:1.0: 1 port detected
+[    1.140720] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.146776] ohci-platform: OHCI generic platform driver
+[    1.152262] [ss_gpi_intc_domain_alloc] hw:58 -> v:56
+[    1.157264] i2c /dev entries driver
+[    1.161165] usbcore: registered new interface driver uvcvideo
+[    1.166773] USB Video Class driver (1.1.1)
+[    1.170995] 1f221000.uart0: ttyS0 at MMIO 0x0 (irq = 30, base_baud = 10800000) is a unknown
+[    1.179576] 1f221200.uart1: ttyS1 at MMIO 0x0 (irq = 31, base_baud = 10800000) is a unknown
+[    1.188184] 1f220400.uart2: ttyS2 at MMIO 0x0 (irq = 32, base_baud = 10800000) is a unknown
+[    1.196776] 1f221400.uart2: ttyS3 at MMIO 0x0 (irq = 33, base_baud = 10800000) is a unknown
+[    1.205842] [Core Voltage] check_voltage_valid: Not support 0mV, use 900mV
+[    1.212947] ms_rtcpwc 1f006800.rtcpwc: rtc core: registered 1f006800.rtcpwc as rtc0
+[    1.222073] [ms_cpufreq_init] Current clk=1005326304
+[    1.227924] mstar_spinand_probe: mstar_spinand enableClock
+[    1.233257] MSYS: DMEM request: [BDMA]:0x00000840
+[    1.238060] MSYS: DMEM request: [BDMA]:0x00000840 success, CPU phy:@0x26A48000, virt:@0xC6A48000
+[    1.247170] MDrv_SPINAND_Init: Detected ID: MID =cd, DID =eb
+[    1.252670] _dumpNandInformation:warning, Bytes / Page :  2048
+[    1.258531] _dumpNandInformation:warning, Pages / Block:  64
+[    1.264170] _dumpNandInformation:warning, Sector/ Page :  512
+[    1.269903] _dumpNandInformation:warning, Spare / Page :  64
+[    1.275585] _dumpNandInformation:warning, Current config r:4 w:4 drv:1
+[    1.282311] mstar_spinand_probe: Magic memcmp pass
+[    1.293795] mstar_spinand_probe: Get partition (Block 0 : page 1)
+[    1.299951] mstar_spinand_probe: CIS contains part info
+[    1.305039] mstar_spinand_probe: Before nand_scan()...
+[    1.310198] 13 cmdlinepart partitions found on MTD device nand0
+[    1.316088] mstar_spinand_probe: Mtd parts parse
+[    1.320400] ERROR: Bus[1] in ms_i2c_xfer_write: Slave dev NAK, Addr: 0xba, Data: 0x80 0x47  
+[    1.320411] Goodix-TS 1-005d: i2c test failed attempt 1: -110
+[    1.335008] Creating 13 MTD partitions on "nand0":
+[    1.339748] 0x000000140000-0x0000001a0000 : "IPL0"
+[    1.365294] 0x0000001a0000-0x000000200000 : "IPL1"
+[    1.385142] ERROR: Bus[1] in ms_i2c_xfer_write: Slave dev NAK, Addr: 0xba, Data: 0x80 0x47  
+[    1.385282] 0x000000200000-0x000000260000 : "IPL_CUST0"
+[    1.398772] Goodix-TS 1-005d: i2c test failed attempt 2: -110
+[    1.404651] ==20180309==> hub_port_init 1 #0
+[    1.405389] 0x000000260000-0x0000002c0000 : "IPL_CUST1"
+[    1.414003] Plug in USB Port1
+[    1.425366] 0x0000002c0000-0x000000380000 : "UBOOT0"
+[    1.433659] 0x000000380000-0x000000440000 : "UBOOT1"
+[    1.441949] 0x000000440000-0x0000004a0000 : "ENV0"
+[    1.449404] 0x0000004a0000-0x0000004c0000 : "KEY_CUST"
+[    1.453803] Goodix-TS 1-005d: I2C communication failure: -110
+[    1.453808] Goodix-TS 1-005d: touchscreen config failed!!!
+[    1.467912] 0x0000004c0000-0x000000520000 : "LOGO"
+[    1.475089] 0x000000520000-0x000000580000 : "wtinfo"
+[    1.489385] winfo: fac txt empty, use default.
+[    1.494516] 0x000000580000-0x000003580000 : "ubi"
+[    1.585323] 0x000003580000-0x000006580000 : "ubi2"
+[    1.613808] usb 2-1: new high-speed USB device number 2 using Sstar-ehci-1
+[    1.676192] 0x000006580000-0x000010000000 : "opt"
+[    1.884258] usb 2-1: New USB device found, idVendor=1b20, idProduct=8888
+[    1.890809] usb 2-1: New USB device strings: Mfr=16, Product=32, SerialNumber=0
+[    1.898131] usb 2-1: Product: SigmaStarWIFI
+[    1.902295] usb 2-1: Manufacturer: SigmaStar inc
+[    1.954450] NET: Registered protocol family 17
+[    1.959395] ThumbEE CPU extension supported.
+[    1.963512] Registering SWP/SWPB emulation handler
+[    1.969424] UBI: auto-attach mtd10
+[    1.972671] ubi0: attaching mtd10
+[    2.019616] UBI: EOF marker found, PEBs from 65 will be erased
+[    2.095129] ubi0: scanning is finished
+[    2.123151] ubi0: volume 2 ("rootfs_data") re-sized from 9 to 277 LEBs
+[    2.130509] ubi0: attached mtd10 (name "ubi", size 48 MiB)
+[    2.135889] ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    2.142715] ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    2.149518] ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    2.156476] ubi0: good PEBs: 384, bad PEBs: 0, corrupted PEBs: 0
+[    2.162472] ubi0: user volume: 3, internal volumes: 1, max. volumes count: 128
+[    2.169709] ubi0: max/mean erase counter: 6/3, WL threshold: 4096, image sequence number: 1264728131
+[    2.178845] ubi0: available PEBs: 0, total reserved PEBs: 384, PEBs reserved for bad PEB handling: 40
+[    2.188088] ubi0: background thread "ubi_bgt0d" started, PID 504
+[    2.194964] block ubiblock0_1: created from ubi0:1(rootfs)
+[    2.200294] ubiblock: device ubiblock0_1 (rootfs) set to be root filesystem
+[    2.243624] ms_rtcpwc 1f006800.rtcpwc: setting system clock to 1970-01-01 00:23:18 UTC (1398)
+[    2.252245] OF: fdt:not creating '/sys/firmware/fdt': CRC check failed
+[    2.271366] VFS: Mounted root (squashfs filesystem) readonly on device 254:0.
+[    2.286239] devtmpfs: mounted
+[    2.289068] This architecture does not have kernel memory protection.
+[    3.183663] init: Console is alive
+[    3.187137] init: - watchdog -
+[    3.456616] kmodloader: loading kernel modules from /etc/modules-boot.d/*
+[    3.505168] exfat: loading out-of-tree module taints kernel.
+[    3.511874] exFAT: Version 1.2.9
+[    3.519417] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
+[    3.543988] init: - preinit -
+[    3.749994] mount_root: loading kmods from internal overlay
+[    3.771129] kmodloader: loading kernel modules from //etc/modules-boot.d/*
+[    3.778385] kmodloader: done loading kernel modules from //etc/modules-boot.d/*
+[    3.935931] UBIFS (ubi0:2): default file-system created
+[    3.953905] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" started, PID 538
+[    3.964431] random: procd: uninitialized urandom read (4 bytes read)
+[    3.996480] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+[    4.004191] UBIFS (ubi0:2): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[    4.014133] UBIFS (ubi0:2): FS size: 33902592 bytes (32 MiB, 267 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+[    4.024545] UBIFS (ubi0:2): reserved for root: 1601302 bytes (1563 KiB)
+[    4.031147] UBIFS (ubi0:2): media format: w4/r0 (latest is w4/r0), UUID CF84533A-EF1B-46A3-A73D-9F5E720BFA04, small LPTl
+[    4.043120] block: attempting to load /tmp/ubifs_cfg/upper/etc/config/fstab
+[    4.050069] block: unable to load configuration (fstab: Entry not found)
+[    4.056707] block: attempting to load /tmp/ubifs_cfg/etc/config/fstab
+[    4.063134] block: unable to load configuration (fstab: Entry not found)
+[    4.069836] block: attempting to load /etc/config/fstab
+[    4.075113] block: unable to load configuration (fstab: Entry not found)
+[    4.081730] block: no usable configuration
+[    4.126670] UBIFS (ubi0:2): un-mount UBI device 0
+[    4.131232] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" stops
+[    4.140879] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" started, PID 541
+[    4.188538] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+[    4.196255] UBIFS (ubi0:2): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[    4.206161] UBIFS (ubi0:2): FS size: 33902592 bytes (32 MiB, 267 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+[    4.216599] UBIFS (ubi0:2): reserved for root: 1601302 bytes (1563 KiB)
+[    4.223204] UBIFS (ubi0:2): media format: w4/r0 (latest is w4/r0), UUID CF84533A-EF1B-46A3-A73D-9F5E720BFA04, small LPTl
+[    4.345390] block: attempting to load /tmp/ubifs_cfg/upper/etc/config/fstab
+[    4.352318] block: unable to load configuration (fstab: Entry not found)
+[    4.358989] block: attempting to load /tmp/ubifs_cfg/etc/config/fstab
+[    4.365443] block: unable to load configuration (fstab: Entry not found)
+[    4.372086] block: attempting to load /etc/config/fstab
+[    4.377342] block: unable to load configuration (fstab: Entry not found)
+[    4.384028] block: no usable configuration
+[    4.445183] mount_root: overlay filesystem has not been fully initialized yet
+[    4.452478] mount_root: switching to ubifs overlay
+[    4.472742] urandom-seed: Seed file not found (/etc/urandom.seed)
+[    4.528173] procd: - early -
+[    4.530975] procd: - watchdog -
+[    5.253949] procd: - watchdog -
+[    5.257124] procd: - ubus -
+[    5.306936] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.429014] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.435495] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.441934] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.448230] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.454685] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.460895] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.467355] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.473669] random: ubusd: uninitialized urandom read (4 bytes read)
+[    5.480231] procd: - init -
+Please press Enter to activate this console.
+[    6.153022] kmodloader: loading kernel modules from /etc/modules.d/*
+[    6.184654] zram: Added device: zram0
+[    6.219643] libphy: Fixed MDIO Bus: probed
+[    6.229208] MSYS: DMEM request: [emac0_buff]:0x00000812
+[    6.234607] MSYS: DMEM request: [emac0_buff]:0x00000812 success, CPU phy:@0x26A49000, virt:@0xC6A49000
+[    6.244685] libphy: mdio: probed
+[    6.247763] mdio_bus mdio-bus@emac0: /soc/emac0/mdio-bus@emac0/ethernet-phy@0 has invalid PHY address
+[    6.257140] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 0
+[    6.276643] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 1
+[    6.283134] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 2
+[    6.289930] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 3
+[    6.296477] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 4
+[    6.303028] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 5
+[    6.309776] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 6
+[    6.316323] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 7
+[    6.322871] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 8
+[    6.329557] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 9
+[    6.336179] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 10
+[    6.342807] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 11
+[    6.349551] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 12
+[    6.356269] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 13
+[    6.362911] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 14
+[    6.369648] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 15
+[    6.376370] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 16
+[    6.383017] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 17
+[    6.389753] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 18
+[    6.396488] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 19
+[    6.403122] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 20
+[    6.409863] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 21
+[    6.416586] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 22
+[    6.423225] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 23
+[    6.429990] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 24
+[    6.436666] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 25
+[    6.443330] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 26
+[    6.450072] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 27
+[    6.456805] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 28
+[    6.463440] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 29
+[    6.470175] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 30
+[    6.476915] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 31
+[    6.483702] [emac_phy_connect][3220] connected mac emac0 to PHY at mdio-bus@emac0:00 [uid=11112222, driver=Generic PHY]
+[    6.495745] MSYS: DMEM request: [emac1_buff]:0x00060812
+[    6.501301] MSYS: DMEM request: [emac1_buff]:0x00060812 success, CPU phy:@0x26A50000, virt:@0xC6A50000
+[    6.511408] libphy: mdio: probed
+[    6.514554] mdio_bus mdio-bus@emac1: /soc/emac1/mdio-bus@emac1/ethernet-phy@1 has invalid PHY address
+[    6.523719] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 0
+[    6.543404] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 1
+[    6.563180] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 2
+[    6.583120] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 3
+[    6.602836] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 4
+[    6.622737] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 5
+[    6.642800] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 6
+[    6.662485] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 7
+[    6.682389] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 8
+[    6.702335] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 9
+[    6.722629] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 10
+[    6.742376] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 11
+[    6.762324] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 12
+[    6.781630] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 13
+[    6.801219] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 14
+[    6.821078] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 15
+[    6.842859] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 16
+[    6.862662] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 17
+[    6.882617] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 18
+[    6.901947] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 19
+[    6.921723] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 20
+[    6.941828] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 21
+[    6.961232] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 22
+[    6.980901] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 23
+[    7.000925] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 24
+[    7.020313] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 25
+[    7.040023] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 26
+[    7.060016] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 27
+[    7.079310] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 28
+[    7.098940] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 29
+[    7.118865] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 30
+[    7.138249] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 31
+[    7.158114] [emac_phy_connect][3220] connected mac emac1 to PHY at mdio-bus@emac1:00 [uid=00000000, driver=Generic PHY]
+[    7.171655] >> [sdmmc] ms_sdmmc_probe 
+[    7.175788] [Padmux]reset Pad_51(reg 0x101e08; mask0x300) to GPIO(org: SDIO_MODE_1)
+[    7.184791] >> [sdmmc_0] Probe Platform Devices
+[    7.193263] nf_conntrack version 0.5.0 (2048 buckets, 8192 max)
+[    7.224577] usbcore: registered new interface driver usbserial
+[    7.230767] usbcore: registered new interface driver usbserial_generic
+[    7.237560] usbserial: USB Serial support registered for generic
+[    7.254273] xt_time: kernel timezone is -0000
+[    7.259841] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    7.272156] PPP generic driver version 2.4.2
+[    7.282259] usbcore: registered new interface driver option
+[    7.288083] usbserial: USB Serial support registered for GSM modem (1-port)
+[    7.296678] kmodloader: done loading kernel modules from /etc/modules.d/*
+[    7.553905] phy: eth0 linkup
+[    8.060850] [ss_gpi_intc_domain_alloc] hw:40 -> v:57
+[    8.066558] [ss_gpi_intc_domain_alloc] hw:41 -> v:58
+[    8.074464] [ss_gpi_intc_domain_alloc] hw:39 -> v:59
+[    8.193913] phy: eth1 linkdown
+[    9.104859] [ss_gpi_intc_domain_alloc] hw:2 -> v:60
+[    9.239255] ubi1: attaching mtd12
+[    9.533671] zram0: detected capacity change from 0 to 53477376
+[   10.177152] ubi1: scanning is finished
+[   10.197960] ubi1: attached mtd12 (name "opt", size 154 MiB)
+[   10.203384] ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[   10.211617] ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[   10.221734] ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+[   10.228837] ubi1: good PEBs: 1236, bad PEBs: 0, corrupted PEBs: 0
+[   10.239293] ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+[   10.246677] ubi1: max/mean erase counter: 3/1, WL threshold: 4096, image sequence number: 1774918765
+[   10.258139] ubi1: available PEBs: 0, total reserved PEBs: 1236, PEBs reserved for bad PEB handling: 40
+[   10.270961] ubi1: background thread "ubi_bgt1d" started, PID 1734
+[   10.433850] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" started, PID 1752
+[   10.525501] UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "opt"
+[   10.532494] UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[   10.563818] UBIFS (ubi1:0): FS size: 149958656 bytes (143 MiB, 1181 LEBs), journal size 7491584 bytes (7 MiB, 59 LEBs)
+[   10.583831] UBIFS (ubi1:0): reserved for root: 4952683 bytes (4836 KiB)
+[   10.590318] UBIFS (ubi1:0): media format: w4/r0 (latest is w4/r0), UUID 7CEDE5C0-A5F9-4922-A0C4-521D4CE8CA05, small LPTl
+[   11.798612] br-lan: port 1(eth0) entered blocking state
+[   11.803686] br-lan: port 1(eth0) entered disabled state
+[   11.809978] device eth0 entered promiscuous mode
+[   11.815657] br-lan: port 1(eth0) entered blocking state
+[   11.820730] br-lan: port 1(eth0) entered forwarding state
+
+
+
+BusyBox v1.28.4 () built-in shell (ash)
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ OpenWrt 18.06-SNAPSHOT, 1.0.0
+ -----------------------------------------------------
+root@wireless-tag:/# 
+root@wireless-tag:/# ubinfo -a
+UBI version:                    1
+Count of UBI devices:           2
+UBI control device major/minor: 10:63
+Present UBI devices:            ubi0, ubi1
+
+ubi0
+Volumes count:                           3
+Logical eraseblock size:                 126976 bytes, 124.0 KiB
+Total amount of logical eraseblocks:     384 (48758784 bytes, 46.5 MiB)
+Amount of available logical eraseblocks: 0 (0 bytes)
+Maximum count of volumes                 128
+Count of bad physical eraseblocks:       0
+Count of reserved physical eraseblocks:  40
+Current maximum erase counter value:     7
+Minimum input/output unit size:          2048 bytes
+Character device major/minor:            248:0
+Present volumes:                         0, 1, 2
+
+Volume ID:   0 (on ubi0)
+Type:        dynamic
+Alignment:   1
+Size:        16 LEBs (2031616 bytes, 1.9 MiB)
+State:       OK
+Name:        kernel
+Character device major/minor: 248:1
+-----------------------------------
+Volume ID:   1 (on ubi0)
+Type:        dynamic
+Alignment:   1
+Size:        47 LEBs (5967872 bytes, 5.6 MiB)
+State:       OK
+Name:        rootfs
+Character device major/minor: 248:2
+-----------------------------------
+Volume ID:   2 (on ubi0)
+Type:        dynamic
+Alignment:   1
+Size:        277 LEBs (35172352 bytes, 33.5 MiB)
+State:       OK
+Name:        rootfs_data
+Character device major/minor: 248:3
+
+===================================
+
+ubi1
+Volumes count:                           1
+Logical eraseblock size:                 126976 bytes, 124.0 KiB
+Total amount of logical eraseblocks:     1236 (156942336 bytes, 149.6 MiB)
+Amount of available logical eraseblocks: 0 (0 bytes)
+Maximum count of volumes                 128
+Count of bad physical eraseblocks:       0
+Count of reserved physical eraseblocks:  40
+Current maximum erase counter value:     3
+Minimum input/output unit size:          2048 bytes
+Character device major/minor:            245:0
+Present volumes:                         0
+
+Volume ID:   0 (on ubi1)
+Type:        dynamic
+Alignment:   1
+Size:        1192 LEBs (151355392 bytes, 144.3 MiB)
+State:       OK
+Name:        opt
+Character device major/minor: 245:1
+root@wireless-tag:/# ifocn[   30.871754] random: fast init done
+
+/bin/ash: i: not found
+root@wireless-tag:/# ifconfig 
+br-lan    Link encap:Ethernet  HWaddr 00:86:88:00:00:00  
+          inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:342 (342.0 B)
+
+eth0      Link encap:Ethernet  HWaddr 00:86:88:00:00:00  
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:34 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+root@wireless-tag:/# ps
+  PID USER       VSZ STAT COMMAND
+    1 root      2612 S    /sbin/procd
+    2 root         0 SW   [kthreadd]
+    3 root         0 SW   [ksoftirqd/0]
+    4 root         0 SW   [kworker/0:0]
+    5 root         0 SW<  [kworker/0:0H]
+    6 root         0 SW   [kworker/u4:0]
+    7 root         0 SW   [rcu_preempt]
+    8 root         0 SW   [rcu_sched]
+    9 root         0 SW   [rcu_bh]
+   10 root         0 SW   [migration/0]
+   11 root         0 SW<  [lru-add-drain]
+   12 root         0 SW   [watchdog/0]
+   13 root         0 SW   [cpuhp/0]
+   14 root         0 SW   [cpuhp/1]
+   15 root         0 SW   [watchdog/1]
+   16 root         0 SW   [migration/1]
+   17 root         0 SW   [ksoftirqd/1]
+   18 root         0 SW   [kworker/1:0]
+   19 root         0 SW<  [kworker/1:0H]
+   20 root         0 SW   [kdevtmpfs]
+   21 root         0 SW<  [netns]
+   22 root         0 SW   [kworker/u4:1]
+  173 root         0 SW   [oom_reaper]
+  174 root         0 SW<  [writeback]
+  176 root         0 SW   [kcompactd0]
+  177 root         0 SW<  [crypto]
+  178 root         0 SW<  [bioset]
+  180 root         0 SW<  [kblockd]
+  202 root         0 SW<  [watchdogd]
+  283 root         0 SW   [kworker/0:1]
+  297 root         0 SW   [kswapd0]
+  298 root         0 SW<  [vmstat]
+  385 root         0 DW   [ehci_monitor]
+  401 root         0 SW   [urdma_tx_thread]
+  418 root         0 SW   [kworker/0:2]
+  420 root         0 SW   [kworker/1:1]
+  423 root         0 SW<  [bioset]
+  428 root         0 SW<  [bioset]
+  431 root         0 SW<  [bioset]
+  434 root         0 SW   [kworker/u4:2]
+  439 root         0 SW<  [bioset]
+  444 root         0 SW<  [bioset]
+  449 root         0 SW<  [bioset]
+  454 root         0 SW<  [bioset]
+  459 root         0 SW<  [bioset]
+  464 root         0 SW<  [bioset]
+  469 root         0 SW<  [bioset]
+  474 root         0 SW<  [bioset]
+  479 root         0 SW<  [bioset]
+  486 root         0 SW<  [bioset]
+  504 root         0 SW   [ubi_bgt0d]
+  505 root         0 SW<  [bioset]
+  510 root         0 SW<  [kworker/1:1H]
+  511 root         0 SW   [kworker/1:2]
+  513 root         0 SW<  [kworker/0:1H]
+  541 root         0 SW   [ubifs_bgt0_2]
+  746 root      2144 S    /sbin/ubusd
+  773 root      3132 S    /bin/ash --login
+  945 root         0 SW<  [bioset]
+  956 root         0 SW<  [cfg80211]
+ 1406 root      2320 S    /sbin/logd -S 64
+ 1634 root      2780 S    /sbin/rpcd -s /var/run/ubus.sock -t 30
+ 1734 root         0 SW   [ubi_bgt1d]
+ 1752 root         0 SW   [ubifs_bgt1_0]
+ 1838 root      2396 S    /sbin/netifd
+ 1952 root      3004 S    /usr/sbin/telnetd -F -l /bin/login.sh
+ 2071 root      2464 S    /usr/sbin/uhttpd -f -h /www -r wireless-tag -x /cgi-
+ 2383 root      2188 S    /usr/sbin/dropbear -F -P /var/run/dropbear.1.pid -p
+ 2386 dnsmasq   2312 S    /usr/sbin/dnsmasq -C /var/etc/dnsmasq.conf.cfg01411c
+ 2421 root      3132 R    ps
+root@wireless-tag:/# uptime 
+ 00:23:52 up 0 min,  load average: 1.15, 0.29, 0.10
+root@wireless-tag:/# mount
+/dev/root on /rom type squashfs (ro,relatime)
+devtmpfs on /rom/dev type devtmpfs (rw,relatime,size=51564k,nr_inodes=12891,mode=755)
+proc on /proc type proc (rw,nosuid,nodev,noexec,noatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,noatime)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noatime)
+/dev/ubi0_2 on /overlay type ubifs (rw,noatime)
+overlayfs:/overlay on / type overlay (rw,noatime,lowerdir=/,upperdir=/overlay/upper,workdir=/overlay/work)
+tmpfs on /dev type tmpfs (rw,nosuid,relatime,size=512k,mode=755)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,mode=600,ptmxmode=000)
+debugfs on /sys/kernel/debug type debugfs (rw,noatime)
+ubi1:opt on /opt type ubifs (rw,relatime)
+root@wireless-tag:/# ls /dev/
+bus          mtd3         mtdblock8    tty22        tty45        ttyS1
+console      mtd3ro       mtdblock9    tty23        tty46        ttyS2
+emac0        mtd4         null         tty24        tty47        ttyS3
+emac1        mtd4ro       ppp          tty25        tty48        ubi0
+full         mtd5         ptmx         tty26        tty49        ubi0_0
+gpiochip0    mtd5ro       pts          tty27        tty5         ubi0_1
+i2c-0        mtd6         random       tty28        tty50        ubi0_2
+i2c-1        mtd6ro       rtc0         tty29        tty51        ubi1
+kmsg         mtd7         shm          tty3         tty52        ubi1_0
+log          mtd7ro       tty          tty30        tty53        ubi_ctrl
+mem          mtd8         tty0         tty31        tty54        ubiblock0_1
+ms_rtcwc     mtd8ro       tty1         tty32        tty55        urandom
+msys         mtd9         tty10        tty33        tty56        vcs
+mtd0         mtd9ro       tty11        tty34        tty57        vcs1
+mtd0ro       mtdblock0    tty12        tty35        tty58        vcsa
+mtd1         mtdblock1    tty13        tty36        tty59        vcsa1
+mtd10        mtdblock10   tty14        tty37        tty6         watchdog
+mtd10ro      mtdblock11   tty15        tty38        tty60        watchdog0
+mtd11        mtdblock12   tty16        tty39        tty61        zero
+mtd11ro      mtdblock2    tty17        tty4         tty62        zram0
+mtd12        mtdblock3    tty18        tty40        tty63
+mtd12ro      mtdblock4    tty19        tty41        tty7
+mtd1ro       mtdblock5    tty2         tty42        tty8
+mtd2         mtdblock6    tty20        tty43        tty9
+mtd2ro       mtdblock7    tty21        tty44        ttyS0
+root@wireless-tag:/# cat /proc/mtd 
+dev:    size   erasesize  name
+mtd0: 00060000 00020000 "IPL0"
+mtd1: 00060000 00020000 "IPL1"
+mtd2: 00060000 00020000 "IPL_CUST0"
+mtd3: 00060000 00020000 "IPL_CUST1"
+mtd4: 000c0000 00020000 "UBOOT0"
+mtd5: 000c0000 00020000 "UBOOT1"
+mtd6: 00060000 00020000 "ENV0"
+mtd7: 00020000 00020000 "KEY_CUST"
+mtd8: 00060000 00020000 "LOGO"
+mtd9: 00060000 00020000 "wtinfo"
+mtd10: 03000000 00020000 "ubi"
+mtd11: 03000000 00020000 "ubi2"
+Mem: 25164K used, 80012K free, 56K shrd, 2660K buff, 6756K cached
+CPU:   0% usr   0% sys   0% nic 100% idle   0% io   0% irq   0% sirq
+Load average: 1.53 0.49 0.17 1/70 2430
+  PID  PPID USER     STAT   VSZ %VSZ %CPU COMMAND
+ 2430   773 root     R     3132   3%   0% top
+  420     2 root     SW       0   0%   0% [kworker/1:1]
+  773     1 root     S     3132   3%   0% /bin/ash --login
+ 1952     1 root     S     3004   3%   0% /usr/sbin/telnetd -F -l /bin/login.sh
+ 1634     1 root     S     2780   3%   0% /sbin/rpcd -s /var/run/ubus.sock -t 30
+    1     0 root     S     2612   2%   0% /sbin/procd
+ 2071     1 root     S     2464   2%   0% /usr/sbin/uhttpd -f -h /www -r wireles
+ 1838     1 root     S     2396   2%   0% /sbin/netifd
+ 1406     1 root     S     2320   2%   0% /sbin/logd -S 64
+ 2386     1 dnsmasq  S     2312   2%   0% /usr/sbin/dnsmasq -C /var/etc/dnsmasq.
+ 2383     1 root     S     2188   2%   0% /usr/sbin/dropbear -F -P /var/run/drop
+  746     1 root     S     2144   2%   0% /sbin/ubusd
+  504     2 root     SW       0   0%   0% [ubi_bgt0d]
+  418     2 root     SW       0   0%   0% [kworker/0:2]
+  283     2 root     SW       0   0%   0% [kworker/0:1]
+    7     2 root     SW       0   0%   0% [rcu_preempt]
+    6     2 root     SW       0   0%   0% [kworker/u4:0]
+   17     2 root     SW       0   0%   0% [ksoftirqd/1]
+   22     2 root     SW       0   0%   0% [kworker/u4:1]
+^C434     2 root     SW       0   0%   0% [kworker/u4:2]
+root@wireless-tag:/# 
+root@wireless-tag:/# free -m
+             total       used       free     shared    buffers     cached
+Mem:        105176      25108      80068         56       2660       6768
+-/+ buffers/cache:      15680      89496
+Swap:            0          0          0
+root@wireless-tag:/# cat /proc/cmdline 
+wt_board=WT2022 console=ttyS0,115200 rootfstype=squashfs,ubifs rootwait=1 LX_MEM=0x7f00000 mma_heap=mma_heap_name0,miu=0,s)
+root@wireless-tag:/# 
+root@wireless-tag:/# lsmod
+cfg80211              155481  0 
+crc_ccitt               1409  1 ppp_async
+exfat                  76502  0 
+fat                    39050  1 vfat
+fixed_phy               2661  1 of_mdio
+ip_tables               7807  3 iptable_nat,iptable_mangle,iptable_filter
+ipt_MASQUERADE          1121  1 
+ipt_REJECT              1419  2 
+iptable_filter          1538  1 
+iptable_mangle          1422  0 
+iptable_nat             1867  1 
+kdrv_emac              30207  0 
+kdrv_sdmmc             22679  0 
+libphy                 25584  6 sstar_100_phy,kdrv_emac,of_mdio,fixed_phy
+lz4                     1435  0 
+lz4_compress            2148  1 lz4
+lz4_decompress          1661  1 lz4
+mmc_block              19218  0 
+mmc_core               73771  2 kdrv_sdmmc,mmc_block
+nf_conntrack           65248  6 xt_state,xt_conntrack,nf_nat_masquerade_ipv4,nf_conntrack_ipv4,nf_nat_ipv4,nf_nat
+nf_conntrack_ipv4       5319  9 
+nf_defrag_ipv4          1233  1 nf_conntrack_ipv4
+nf_log_common           2390  1 nf_log_ipv4
+nf_log_ipv4             3182  0 
+nf_nat                  8539  4 xt_nat,nf_nat_redirect,nf_nat_masquerade_ipv4,nf_nat_ipv4
+nf_nat_ipv4             3319  1 iptable_nat
+nf_nat_masquerade_ipv4    1933  1 ipt_MASQUERADE
+nf_nat_redirect         1188  1 xt_REDIRECT
+nf_reject_ipv4          1842  1 ipt_REJECT
+nls_utf8                1316  0 
+of_mdio                 5751  3 kdrv_emac
+option                 31474  0 
+ppp_async               5572  0 
+ppp_generic            19201  1 ppp_async
+slhc                    3273  1 ppp_generic
+sstar_100_phy           1890  0 
+usb_wwan                4087  1 option
+usbserial              17045  2 option,usb_wwan
+vfat                    6416  0 
+x_tables               11466 18 iptable_mangle,iptable_filter,ipt_REJECT,ipt_MASQUERADE,ip_tables,xt_time,xt_tcpudp,xt_staG
+xt_LOG                  1240  0 
+xt_REDIRECT             1335  0 
+xt_TCPMSS               2068  0 
+xt_comment               999 50 
+xt_conntrack            2579  8 
+xt_limit                1571  1 
+xt_mac                  1059  0 
+xt_mark                 1046  0 
+xt_multiport            1532  0 
+xt_nat                  1790  0 
+xt_state                1246  0 
+xt_tcpudp               1927  4 
+xt_time                 1889  0 
+zram                   16404  0 
+zsmalloc               10630  1 zram
+
+
+root@wireless-tag:/# pidstat  -w
+Linux 4.9.84 (wireless-tag)     01/01/70        _armv7l_        (2 CPU)
+
+00:31:04      UID       PID   cswch/s nvcswch/s  Command
+00:31:04        0         1      2.20      1.43  procd
+00:31:04        0         2      0.18      0.00  kthreadd
+00:31:04        0         3      0.33      0.00  ksoftirqd/0
+00:31:04        0         5      0.01      0.00  kworker/0:0H
+00:31:04        0         7      2.28      0.00  rcu_preempt
+00:31:04        0         8      0.05      0.00  rcu_sched
+00:31:04        0         9      0.00      0.00  rcu_bh
+00:31:04        0        10      0.42      0.00  migration/0
+00:31:04        0        11      0.00      0.00  lru-add-drain
+00:31:04        0        12      0.26      0.00  watchdog/0
+00:31:04        0        13      0.01      0.00  cpuhp/0
+00:31:04        0        14      0.01      0.01  cpuhp/1
+00:31:04        0        15      0.25      0.00  watchdog/1
+00:31:04        0        16      0.41      0.00  migration/1
+00:31:04        0        17      0.43      0.00  ksoftirqd/1
+00:31:04        0        19      0.02      0.00  kworker/1:0H
+00:31:04        0        20      0.31      0.00  kdevtmpfs
+00:31:04        0        21      0.00      0.00  netns
+00:31:04        0        22      0.48      0.00  kworker/u4:1
+00:31:04        0       173      0.00      0.00  oom_reaper
+00:31:04        0       174      0.00      0.00  writeback
+00:31:04        0       176      0.00      0.00  kcompactd0
+00:31:04        0       177      0.00      0.00  crypto
+00:31:04        0       178      0.00      0.00  bioset
+00:31:04        0       180      0.00      0.00  kblockd
+00:31:04        0       202      0.00      0.00  watchdogd
+00:31:04        0       283      0.06      0.03  kworker/0:1
+00:31:04        0       297      0.01      0.00  kswapd0
+00:31:04        0       298      0.00      0.00  vmstat
+00:31:04        0       385      8.32      0.00  ehci_monitor
+00:31:04        0       401      0.00      0.00  urdma_tx_thread
+00:31:04        0       418      1.88      0.29  kworker/0:2
+00:31:04        0       420     15.25      1.01  kworker/1:1   +++++++++++++++++++ very high +++++++++
+00:31:04        0       423      0.00      0.00  bioset
+00:31:04        0       428      0.00      0.00  bioset
+00:31:04        0       431      0.00      0.00  bioset
+00:31:04        0       434      1.03      0.00  kworker/u4:2
+00:31:04        0       439      0.00      0.00  bioset
+00:31:04        0       444      0.00      0.00  bioset
+00:31:04        0       449      0.00      0.00  bioset
+00:31:04        0       454      0.00      0.00  bioset
+00:31:04        0       459      0.00      0.00  bioset
+00:31:04        0       464      0.00      0.00  bioset
+00:31:04        0       469      0.00      0.00  bioset
+00:31:04        0       474      0.00      0.00  bioset
+00:31:04        0       479      0.00      0.00  bioset
+00:31:04        0       486      0.00      0.00  bioset
+00:31:04        0       504      0.16      0.06  ubi_bgt0d
+00:31:04        0       505      0.00      0.00  bioset
+00:31:04        0       510      0.06      0.00  kworker/1:1H
+00:31:04        0       511      0.00      0.00  kworker/1:2
+00:31:04        0       513      0.02      0.00  kworker/0:1H
+00:31:04        0       541      0.45      0.00  ubifs_bgt0_2
+00:31:04        0       746      0.38      0.01  ubusd
+00:31:04        0       773      0.59      0.02  ash
+00:31:04        0       945      0.00      0.00  bioset
+00:31:04        0       956      0.00      0.00  cfg80211
+00:31:04        0      1406      0.21      0.03  logd
+00:31:04        0      1634      0.01      0.02  rpcd
+00:31:04        0      1734      0.00      0.00  ubi_bgt1d
+00:31:04        0      1752      0.00      0.00  ubifs_bgt1_0
+00:31:04        0      1838      1.04      0.13  netifd
+00:31:04        0      1952      0.00      0.00  telnetd
+00:31:04        0      2071      0.00      0.01  uhttpd
+00:31:04        0      2383      0.01      0.01  dropbear
+00:31:04      453      2386      0.00      0.06  dnsmasq
+00:31:04        0      2438      0.00      0.00  pidstat
+
+root@wireless-tag:/# 
+root@wireless-tag:/# uptime 
+ 00:31:17 up 8 min,  load average: 2.00, 1.61, 0.83
+
+root@wireless-tag:/# cat /proc/timer_list 
+Timer List Version: v0.8
+HRTIMER_MAX_CLOCK_BASES: 4
+now at 1588939883521 nsecs
+CONFIG_HZ: 100
+
+cpu: 0
+ clock 0:
+  .base:       c68c24e0
+  .index:      0
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get
+  .offset:     0 nsecs
+active timers:
+ #0: <c68c2798>, watchdog_timer_fn, S:01
+ # expires at 1592350000000-1592350000000 nsecs [in 3410116479 to 3410116479 nsecs]
+ #1: <c6643eb8>, hrtimer_wakeup, S:01
+ # expires at 1593220039521-1593225039520 nsecs [in 4280156000 to 4285155999 nsecs]
+ #2: sched_clock_timer, sched_clock_poll, S:01
+ # expires at 4398046511055-4398046511055 nsecs [in 2809106627534 to 2809106627534 nsecs]
+ clock 1:
+  .base:       c68c2500
+  .index:      1
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_real
+  .offset:     1396450358834 nsecs
+active timers:
+ clock 2:
+  .base:       c68c2520
+  .index:      2
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_boottime
+  .offset:     0 nsecs
+active timers:
+ clock 3:
+  .base:       c68c2540
+  .index:      3
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_clocktai
+  .offset:     1396450358834 nsecs
+active timers:
+  .expires_next   : 9223372036854775807 nsecs
+  .hres_active    : 0
+  .nr_events      : 0
+  .nr_retries     : 0
+  .nr_hangs       : 0
+  .max_hang_time  : 0
+  .nohz_mode      : 1
+  .last_tick      : 1588940000000 nsecs
+  .tick_stopped   : 0
+  .idle_jiffies   : 128893
+  .idle_calls     : 16262
+  .idle_sleeps    : 9982
+  .idle_entrytime : 1588936851021 nsecs
+  .idle_waketime  : 1588936054688 nsecs
+  .idle_exittime  : 1588936851021 nsecs
+  .idle_sleeptime : 1573696820687 nsecs
+  .iowait_sleeptime: 76991671 nsecs
+  .last_jiffies   : 128893
+  .next_timer     : 1589200000000
+  .idle_expires   : 1589200000000 nsecs
+jiffies: 128894
+
+cpu: 1
+ clock 0:
+  .base:       c68cf4e0
+  .index:      0
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get
+  .offset:     0 nsecs
+active timers:
+ #0: def_rt_bandwidth, sched_rt_period_timer, S:01
+ # expires at 1589360000000-1589360000000 nsecs [in 420116479 to 420116479 nsecs]
+ #1: <c52c9eb8>, hrtimer_wakeup, S:01
+ # expires at 1589590031355-1589591031354 nsecs [in 650147834 to 651147833 nsecs]
+ #2: <c68cf798>, watchdog_timer_fn, S:01
+ # expires at 1592460000000-1592460000000 nsecs [in 3520116479 to 3520116479 nsecs]
+ clock 1:
+  .base:       c68cf500
+  .index:      1
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_real
+  .offset:     1396450358834 nsecs
+active timers:
+ clock 2:
+  .base:       c68cf520
+  .index:      2
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_boottime
+  .offset:     0 nsecs
+active timers:
+ clock 3:
+  .base:       c68cf540
+  .index:      3
+  .resolution: 10000000 nsecs
+  .get_time:   ktime_get_clocktai
+  .offset:     1396450358834 nsecs
+active timers:
+  .expires_next   : 9223372036854775807 nsecs
+  .hres_active    : 0
+  .nr_events      : 0
+  .nr_retries     : 0
+  .nr_hangs       : 0
+  .max_hang_time  : 0
+  .nohz_mode      : 1
+  .last_tick      : 1588950000000 nsecs
+  .tick_stopped   : 1
+  .idle_jiffies   : 128894
+  .idle_calls     : 31373
+  .idle_sleeps    : 25754
+  .idle_entrytime : 1588940092188 nsecs
+  .idle_waketime  : 1588920000688 nsecs
+  .idle_exittime  : 1588936407855 nsecs
+  .idle_sleeptime : 1575708103915 nsecs
+  .iowait_sleeptime: 124071166 nsecs
+  .last_jiffies   : 128894
+  .next_timer     : 1588960000000
+  .idle_expires   : 1588960000000 nsecs
+jiffies: 128894
+
+Tick Device: mode:     1
+Broadcast device
+Clock Event Device: <NULL>
+tick_broadcast_mask: 0
+tick_broadcast_oneshot_mask: 0
+
+Tick Device: mode:     1
+Per CPU device: 0
+Clock Event Device: arch_sys_timer
+ max_delta_ns:   357913938056
+ min_delta_ns:   2500
+ mult:           25769804
+ shift:          32
+ mode:           3
+ next_event:     1588950000000 nsecs
+ set_next_event: arch_timer_set_next_event_virt
+ shutdown: arch_timer_shutdown_virt
+ oneshot stopped: arch_timer_shutdown_virt
+ event_handler:  tick_nohz_handler
+ retries:        4
+
+Tick Device: mode:     1
+Per CPU device: 1
+Clock Event Device: arch_sys_timer
+ max_delta_ns:   357913938056
+ min_delta_ns:   2500
+ mult:           25769804
+ shift:          32
+ mode:           3
+ next_event:     1588960000000 nsecs
+ set_next_event: arch_timer_set_next_event_virt
+ shutdown: arch_timer_shutdown_virt
+ oneshot stopped: arch_timer_shutdown_virt
+ event_handler:  tick_nohz_handler
+ retries:        0
+

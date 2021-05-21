@@ -39,7 +39,7 @@ boot() {
 	/bin/config_generate
 	uci_apply_defaults
 
-	[ -f /usr/sbin/sstar-mpp ] && sstar-mpp start
+#	[ -f /usr/sbin/sstar-mpp ] && sstar-mpp start
 
 	/sbin/kmodloader
 	

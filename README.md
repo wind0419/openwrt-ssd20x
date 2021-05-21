@@ -81,7 +81,7 @@ make V=s -j4
 | WT2022-root-ubi.img      | 根文件系统(SPI NAND) |
 
 
-# 升级
+# 升级--linux运行中
 系统中通过串口或者telnet进入系统后台，执行如下命令：
 
 ```
@@ -92,6 +92,7 @@ sysupgrade WT2022-sysupgrade.bin
 
 升级完成之后，系统将自动重启
 
+# 升级--uboot中
 uboot下通过串口和网口进行升级（上电阶段按下enter按键），执行如下命令：
 
 设置环境变量，启动网络

@@ -1,0 +1,175 @@
+root@wireless-tag:/# cat /proc/mtd 
+dev:    size   erasesize  name
+mtd0: 00060000 00020000 "IPL0"
+mtd1: 00060000 00020000 "IPL1"
+mtd2: 00060000 00020000 "IPL_CUST0"
+mtd3: 00060000 00020000 "IPL_CUST1"
+mtd4: 000c0000 00020000 "UBOOT0"
+mtd5: 000c0000 00020000 "UBOOT1"
+mtd6: 00060000 00020000 "ENV0"
+mtd7: 00020000 00020000 "KEY_CUST"
+mtd8: 00060000 00020000 "LOGO"
+mtd9: 00060000 00020000 "wtinfo"
+mtd10: 03000000 00020000 "ubi"
+mtd11: 03000000 00020000 "ubi2"
+mtd12: 09a80000 00020000 "opt"
+root@wireless-tag:/# mtd erase ubi
+Unlocking ubi ...
+Erasing ubi ...
+root@wireless-tag:/# 
+root@wireless-tag:/# 
+root@wireless-tag:/# sync
+root@wireless-tag:/# reboot 
+root@wireless-tag:/# [  297.398750] br-lan: port 1(eth0) entered disabled state
+[  297.404076] device eth0 left promiscuous mode
+[  297.408331] br-lan: port 1(eth0) entered disabled state
+[  297.873889] phy: eth0 linkdown
+[  298.604093] UBIFS (ubi1:0): un-mount UBI device 1
+[  298.608658] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" stops
+1  301.983857] reboot: Restarting system
+IPL g5da0ceb
+D-1e
+HW Reset
+miupll_233MHz
+MIU0 zq=0x003b
+miu_bw_set
+utmi_1_init done
+utmi_2_init done
+utmi_3_init done
+usbpll init done......
+cpupll init done
+SPI 54M
+clk_init done 
+P1 USB_rterm trim=0x0000
+P1 USB_HS_TX_CURRENT trim=0x0001
+P2 USB_rterm trim=0x0000
+P2 USB_HS_TX_CURRENT trim=0x0000
+P3 USB_rterm trim=0x0000
+P3 USB_HS_TX_CURRENT trim=0x0000
+PM_vol_bgap trim=0x003e
+GCR_SAR_DATA trim=0x018f
+ETH 10T output swing trim=0x0010
+ETH 100T output swing trim=0x0010
+ETH RX input impedance trim=0x0000
+ETH TX output impedance trim=0x0000
+MIPI_HS_RTERM trim=0x0001
+MIPI_LP_RTERM trim=0x0000
+128MB
+BIST0_0001-OK
+Enable MMU and CACHE
+Load IPL_CUST from SPINAND
+QUAD MODE ENABLE
+Checksum OK
+
+IPL_CUST g5da0ceb
+runUBOOT()
+runUBOOT()
+[SPINAND]
+SPI 54M
+Load UBOOT from SPINAND
+ -Verify UBOOT CRC32 passed!
+ -Decompress UBOOT XZ
+  decomp_size=0x0009b034
+Disable MMU and D-cache before jump to UBOOT
+
+
+U-Boot 2015.01 (Feb 09 2021 - 10:07:00)
+
+Version: I2g136e681
+       Watchdog enabled
+DRAM:  
+WARNING: Caches not enabled
+SPINAND: _MDrv_SPINAND_GET_INFO: Found SPINAND INFO 
+(0xCD) (0xEB) (0x11) 
+SPINAND: board_nand_init: CIS contains part info
+256 MiB
+MMC:   MStar SD/MMC: 0
+In:    serial
+Out:   serial
+Err:   serial
+Net:   MAC Address 00:30:1B:BA:02:DB
+Auto-Negotiation...
+Link Status Speed:100 Full-duplex:1
+sstar_emac
+gpio debug MHal_GPIO_Pad_Set: pin=4
+gpio[4] is 1
+gpio debug MHal_GPIO_Pad_Set: pin=18
+gpio[18] is 1
+
+NAND read: device 0 offset 0x4c0000, size 0x60000
+Time:87202 us, speed:4509 KB/s
+ 393216 bytes read: OK
+gpio debug MHal_GPIO_Pad_Set: pin=71
+gpio[71] is 0
+UBI: parsing mtd_dev string 'mtd=10'
+UBI: attaching mtd1 to ubi0
+UBI: scanning is finished
+UBI: empty MTD device detected
+skip erase
+skip write
+skip write
+skip write
+skip erase
+skip write
+skip write
+....
+....
+
+UBI: attached mtd1 (name "mtd=10", size 48 MiB) to ubi0
+UBI: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+UBI: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+UBI: VID header offset: 2048 (aligned 2048), data offset: 4096
+UBI: good PEBs: 384, bad PEBs: 0, corrupted PEBs: 0
+UBI: user volume: 0, internal volumes: 1, max. volumes count: 128      ++++++++  user volume: 0  +++++++++
+UBI: max/mean erase counter: 1/0, WL threshold: 4096, image sequence number: 0
+UBI: available PEBs: 340, total reserved PEBs: 44, PEBs reserved for bad PEB handling: 40
+Read 0 bytes from volume kernel to 22000000
+Volume kernel not found!                    +++++++++++++++++
+gpio debug MHal_GPIO_Pad_Set: pin=71
+gpio[71] is 1
+Wrong Image Format for bootm command
+ERROR: can't get kernel image!              ++++++++ mtd10 boot failed +++++++++
+UBI: detaching mtd1 from ubi0
+UBI: mtd1 is detached from ubi0
+UBI: parsing mtd_dev string 'mtd=11'
+UBI: attaching mtd1 to ubi0
+UBI: scanning is finished
+UBI: attached mtd1 (name "mtd=11", size 48 MiB) to ubi0              ++++++ try mtd11 to ubi0 +++++++++++
+UBI: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+UBI: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+UBI: VID header offset: 2048 (aligned 2048), data offset: 4096
+UBI: good PEBs: 384, bad PEBs: 0, corrupted PEBs: 0
+UBI: user volume: 3, internal volumes: 1, max. volumes count: 128     ++++++++  user volume: 3  +++++++++
+UBI: max/mean erase counter: 4/3, WL threshold: 4096, image sequence number: 538824846
+UBI: available PEBs: 268, total reserved PEBs: 116, PEBs reserved for bad PEB handling: 40
+Read 0 bytes from volume kernel to 22000000
+No size specified -> Using max size (2031616)
+##  Booting kernel from Legacy Image at 22000000 ...
+   Image Name:   MVX4##I2M#g4cfe846KL_LX409##[BR:
+   Image Type:   ARM Linux Kernel Image (lzma compressed)
+   Data Size:    1949540 Bytes = 1.9 MiB
+   Load Address: 20008000
+   Entry Point:  20008000
+   Verifying Checksum ... OK
+-usb_stop(USB_PORT0)
+-usb_stop(USB_PORT1)
+-usb_stop(USB_PORT2)
+   Uncompressing Kernel Image ... 
+[XZ] !!!reserved 0x21000000 length=0x 1000000 for xz!!
+   XZ: uncompressed size=0x3e7000, ret=7
+OK
+atags:0x20000000
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.9.84 (gwind@gwind-P5820T) (gcc version 8.2.1 20180802 (GNU Toolchain for the A-profile Arch1
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] early_atags_to_fdt() success
+[    0.000000] OF: fdt:Machine model: INFINITY2M SSC011A-S01A-S By Wind
+[    0.000000] LXmem is 0x7f00000 PHYS_OFFSET is 0x20000000
+[    0.000000] Add mem start 0x20000000 size 0x7f00000!!!!
+[    0.000000] 
+[    0.000000] LX_MEM  = 0x20000000, 0x7f00000

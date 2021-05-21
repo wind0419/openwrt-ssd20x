@@ -1,0 +1,159 @@
+root@wireless-tag:/tmp# sysupgrade WT2022-sysupgrade.bin
+Saving config files...
+killall: watchdog: no process killed
+Commencing upgrade. Closing all shell sessions.
+Watchdog handover: fd=3
+- watchdog -
+Sending TERM to remaining processes ... logd rpcd netifd uhttpd dnsmasq ubusd 
+Sending KILL to remaining processes ... 
+[ 1185.848817] sh (2583): drop_caches: 3
+Switching to ramdisk...
+
+[ 1189.164270] UBIFS (ubi1:0): un-mount UBI device 1
+[ 1189.168840] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" stops
+[ 1189.186512] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" stops
+[ 1189.249061] UBIFS (ubi0:2): un-mount UBI device 0
+Performing system upgrade...
+mtd10: 03000000 00020000 "ubi"
+mtd11: 03000000 00020000 "ubi2"
+
+ubidetach: error!: cannot detach "/dev/mtd11"
+           error 19 (No such device)
+ubiformat: mtd11 (nand), size 50331648 bytes (48.0 MiB), 384 eraseblocks of 131072 bytes (128.0 KiB), min. I/O size 2048 bs
+libscan: scanning eraseblock 383 -- 100 % complete  
+ubiformat: 384 eraseblocks have valid erase counter, mean value is 1
+ubiformat: flashing eraseblock 69 -- 100 % complete  
+ubiformat: formatting eraseblock 366 -- 94 % comp
+[ 1196.564326] ubi2: attaching mtd11
+ubiformat: formatting eraseblock 375 -- 9
+[ 1196.612842] UBI: EOF marker found, PEBs from 65 will be erased
+ubiformat: formatting eraseblock 383 -- 100 % complete  
+[ 1196.688984] ubi2: scanning is finished
+[ 1196.717148] ubi2: volume 2 ("rootfs_data") re-sized from 9 to 277 LEBs
+[ 1196.724308] ubi2: attached mtd11 (name "ubi2", size 48 MiB)
+[ 1196.729726] ubi2: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[ 1196.736631] ubi2: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[ 1196.743390] ubi2: VID header offset: 2048 (aligned 2048), data offset: 4096
+[ 1196.750382] ubi2: good PEBs: 384, bad PEBs: 0, corrupted PEBs: 0
+[ 1196.756372] ubi2: user volume: 3, internal volumes: 1, max. volumes count: 128
+[ 1196.763584] ubi2: max/mean erase counter: 3/2, WL threshold: 4096, image sequence number: 1232283077
+[ 1196.772760] ubi2: available PEBs: 0, total reserved PEBs: 384, PEBs reserved for bad PEB handling: 40
+[ 1196.781980] ubi2: background thread "ubi_bgt2d" started, PID 3308
+UBI device number 2, total 384 LEBs (48758784 bytes, 46.5 MiB), available 0 LEBs (0 bytes), LEB size 126976 bytes (124.0 K)
+[ 1196.863522] UBIFS (ubi2:2): default file-system created
+[ 1196.872405] UBIFS (ubi2:2): background thread "ubifs_bgt2_2" started, PID 3323
+[ 1196.999729] UBIFS (ubi2:2): UBIFS: mounted UBI device 2, volume 2, name "rootfs_data"
+[ 1197.007435] UBIFS (ubi2:2): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[ 1197.017348] UBIFS (ubi2:2): FS size: 33902592 bytes (32 MiB, 267 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+[ 1197.027789] UBIFS (ubi2:2): reserved for root: 1601302 bytes (1563 KiB)
+[ 1197.034406] UBIFS (ubi2:2): media format: w4/r0 (latest is w4/r0), UUID D3D8E534-711B-41AF-B591-5B830B2B8EA5, small LPTl
+[ 1197.177186] UBIFS (ubi2:2): un-mount UBI device 2
+[ 1197.181751] UBIFS (ubi2:2): background thread "ubifs_bgt2_2" stops
+[ 1197.198473] ubi2: detaching mtd11
+[ 1197.204172] ubi2: mtd11 is detached
+[ 1197.234128] block ubiblock0_1: released
+[ 1197.237885] ubi0: detaching mtd10
+[ 1197.241844] ubi0: mtd10 is detached
+ubiformat: mtd10 (nand), size 50331648 bytes (48.0 MiB), 384 eraseblocks of 131072 bytes (128.0 KiB), min. I/O size 2048 bs
+libscan: scanning eraseblock 383 -- 100 % complete  
+ubiformat: 384 eraseblocks have valid erase counter, mean value is 2
+ubiformat: flashing eraseblock 69 -- 100 % complete  
+ubiformat: formatting eraseblock [ 1202.989304] ubi0: attaching mtd10
+ubiformat: formatting era[ 1203.036918] UBI: EOF marker found, PEBs from 65 will be erased
+ubiformat: formatting eraseblock 383 -- 100 % complete  
+[ 1203.112992] ubi0: scanning is finished
+[ 1203.141002] ubi0: volume 2 ("rootfs_data") re-sized from 9 to 277 LEBs
+[ 1203.148175] ubi0: attached mtd10 (name "ubi", size 48 MiB)
+[ 1203.153506] ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[ 1203.160448] ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[ 1203.167184] ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+[ 1203.174149] ubi0: good PEBs: 384, bad PEBs: 0, corrupted PEBs: 0
+[ 1203.180139] ubi0: user volume: 3, internal volumes: 1, max. volumes count: 128
+[ 1203.187383] ubi0: max/mean erase counter: 6/3, WL threshold: 4096, image sequence number: 1264728131
+[ 1203.196517] ubi0: available PEBs: 0, total reserved PEBs: 384, PEBs reserved for bad PEB handling: 40
+[ 1203.205751] ubi0: background thread "ubi_bgt0d" started, PID 3355
+UBI device number 0, total 384 LEBs (48758784 bytes, 46.5 MiB), available 0 LEBs (0 bytes), LEB size 126976 bytes (124.0 K)
+[ 1203.267843] UBIFS (ubi0:2): default file-system created
+[ 1203.276738] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" started, PID 3366
+[ 1203.401164] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+[ 1203.408870] UBIFS (ubi0:2): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[ 1203.418784] UBIFS (ubi0:2): FS size: 33902592 bytes (32 MiB, 267 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+[ 1203.429230] UBIFS (ubi0:2): reserved for root: 1601302 bytes (1563 KiB)
+[ 1203.435840] UBIFS (ubi0:2): media format: w4/r0 (latest is w4/r0), UUID E4120156-FAEB-48A7-96DC-F59472680E3F, small LPTl
+[ 1203.535111] UBIFS (ubi0:2): un-mount UBI device 0
+[ 1203.540094] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" stops
+[ 1203.565300] ubi0: detaching mtd10
+[ 1203.571575] ubi0: mtd10 is detached
+Upgrade completed
+Rebooting system...
+umount: can't unmount /dev: Device or resource busy
+umount: can't unmount /tmp: Device or resource busy
+[ 1204.793864] reboot: Restarting system
+1
+IPL g5da0ceb
+D-1e
+HW Reset
+miupll_233MHz
+MIU0 zq=0x003b
+miu_bw_set
+utmi_1_init done
+utmi_2_init done
+utmi_3_init done
+usbpll init done......
+cpupll init done
+SPI 54M
+clk_init done 
+P1 USB_rterm trim=0x0000
+P1 USB_HS_TX_CURRENT trim=0x0001
+P2 USB_rterm trim=0x0000
+P2 USB_HS_TX_CURRENT trim=0x0000
+P3 USB_rterm trim=0x0000
+P3 USB_HS_TX_CURRENT trim=0x0000
+PM_vol_bgap trim=0x003e
+GCR_SAR_DATA trim=0x018f
+ETH 10T output swing trim=0x0010
+ETH 100T output swing trim=0x0010
+ETH RX input impedance trim=0x0000
+ETH TX output impedance trim=0x0000
+MIPI_HS_RTERM trim=0x0001
+MIPI_LP_RTERM trim=0x0000
+128MB
+BIST0_0001-OK
+Enable MMU and CACHE
+Load IPL_CUST from SPINAND
+QUAD MODE ENABLE
+Checksum OK
+
+IPL_CUST g5da0ceb
+runUBOOT()
+runUBOOT()
+[SPINAND]
+SPI 54M
+Load UBOOT from SPINAND
+ -Verify UBOOT CRC32 passed!
+ -Decompress UBOOT XZ
+  decomp_size=0x0009b034
+Disable MMU and D-cache before jump to UBOOT
+
+
+U-Boot 2015.01 (Feb 09 2021 - 10:07:00)
+
+Version: I2g136e681
+       Watchdog enabled
+DRAM:  
+WARNING: Caches not enabled
+SPINAND: _MDrv_SPINAND_GET_INFO: Found SPINAND INFO 
+(0xCD) (0xEB) (0x11) 
+SPINAND: board_nand_init: CIS contains part info
+256 MiB
+MMC:   MStar SD/MMC: 0
+In:    serial
+Out:   serial
+Err:   serial
+Net:   MAC Address 00:30:1B:BA:02:DB
+Auto-Negotiation...
+Link Status Speed:100 Full-duplex:1
+sstar_emac
+Wireless-tag# 
+Wireless-tag# 
+Wireless-tag# 

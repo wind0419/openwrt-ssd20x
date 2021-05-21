@@ -195,7 +195,7 @@ static int mstar_get_storage_type(void)
 
 static int mstar_get_package_type(void)
 {
-    //printk("BOARD name [%s] \n", &mstar_soc_dev_attr.machine[11]);
+    printk("BOARD name [%s] \n", &mstar_soc_dev_attr.machine[11]);
 
     if(!strcmp(&mstar_soc_dev_attr.machine[11], "SSC010A-S01A-S"))
         return MS_I2M_PACKAGE_QFN_DDR3_128MB;
@@ -207,6 +207,7 @@ static int mstar_get_package_type(void)
         return MS_I2M_PACKAGE_UNKNOWN;
     }
 }
+
 static char mstar_platform_name[]="I2M";
 
 char* mstar_get_platform_name(void)

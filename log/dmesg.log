@@ -1,0 +1,735 @@
+
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] Booting Linux on physical CPU 0x0
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000] Linux version 4.9.84 (gwind@gwind-P5820T) (gcc version 8.2.1 20180802 (GNU Toolchain for the A-profile Architecture 8.2-2018-08 (arm-rel-8.23)) ) #0 SMP PREEMPT Fri Mar 12 04:21:20 2021
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] CPU: div instructions available: patching division code
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] early_atags_to_fdt() success
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] OF: fdt:Machine model: INFINITY2M SSC011A-S01A-S By Wind
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] LXmem is 0x7f00000 PHYS_OFFSET is 0x20000000
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] Add mem start 0x20000000 size 0x7f00000!!!!
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000]
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] LX_MEM  = 0x20000000, 0x7f00000
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] LX_MEM2 = 0x0, 0x0
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] LX_MEM3 = 0x0, 0x0
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] EMAC_LEN= 0x0
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] DRAM_LEN= 0x0
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] deal_with_reserved_mmap memblock_reserve success mmap_reserved_config[0].reserved_start=
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] 0x27c00000
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000]
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] deal_with_reserve_mma_heap memblock_reserve success mma_config[0].reserved_start=
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] 0x26c00000
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000]
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000] cma: dma_contiguous_reserve(limit ffffffff)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000] cma: dma_contiguous_reserve: reserving 2 MiB for global area
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000] cma: cma_declare_contiguous(size 0x00200000, base 0x00000000, limit 0xffffffff alignment 0x00000000)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] cma: Reserved 2 MiB at 0x26a00000
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] Memory policy: Data cache writealloc
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000] On node 0 totalpages: 28416
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000] free_area_init_node: node 0, pgdat c03ed080, node_mem_map c68f8000
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000]   Normal zone: 254 pages used for memmap
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000]   Normal zone: 0 pages reserved
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000]   Normal zone: 28416 pages, LIFO batch:7
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] percpu: Embedded 13 pages/cpu @c68bf000 s21016 r8192 d24040 u53248
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000] pcpu-alloc: s21016 r8192 d24040 u53248 alloc=13*4096
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.000000] pcpu-alloc: [0] 0 [0] 1
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 28162
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000] Kernel command line: wt_board=WT2022 console=ttyS0,115200 rootfstype=squashfs,ubifs rootwait=1 LX_MEM=0x7f00000 mma_heap=mma_heap_name0,miu=0,sz=0x1000000 mma_memblock_remove=1 highres=off mmap_reserved=fb,miu=0,sz=0x300000,max_start_off=0x7C00000,max_end_off=0x7F00000 mtdparts=nand0:384k@1280k(IPL0),384k(IPL1),384k(IPL_CUST0),384k(IPL_CUST1),768k(UBOOT0),768k(UBOOT1),384k(ENV0),0x20000(KEY_CUST),0x60000(LOGO),0x60000(wtinfo),0x3000000(ubi),0x3000000(ubi2),-(opt)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] PID hash table entries: 512 (order: -1, 2048 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] Memory: 103128K/113664K available (2309K kernel code, 215K rwdata, 1176K rodata, 156K init, 152K bss, 8488K reserved, 2048K cma-reserved)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000] Virtual kernel memory layout:
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]     vmalloc : 0xc8000000 - 0xff800000   ( 888 MB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]     lowmem  : 0xc0000000 - 0xc7f00000   ( 127 MB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]     modules : 0xbf800000 - 0xc0000000   (   8 MB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]       .text : 0xc0008000 - 0xc0249648   (2310 kB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]       .init : 0xc0391000 - 0xc03b8000   ( 156 kB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]       .data : 0xc03b8000 - 0xc03edd98   ( 216 kB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000]        .bss : 0xc03ef000 - 0xc04153fc   ( 153 kB)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] Preemptible hierarchical RCU implementation.
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] 	Build-time adjustment of leaf fanout to 32.
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] 	RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=2
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] NR_IRQS:16 nr_irqs:16 16
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] ms_init_main_intc: np->name=ms_main_intc, parent=gic
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] ms_init_pm_intc: np->name=ms_pm_intc, parent=ms_main_intc
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] ss_init_gpi_intc: np->name=ms_gpi_intc, parent=ms_main_intc
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.000000] Find CLK_cpupll_clk, hook ms_cpuclk_ops
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] arm_arch_timer: Architected cp15 timer(s) running at 6.00MHz (virt).
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1623fa770, max_idle_ns: 440795202238 ns
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000005] sched_clock: 56 bits at 6MHz, resolution 166ns, wraps every 4398046511055ns
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000017] Switching to timer-based delay loop, resolution 166ns
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.000380] Console: colour dummy device 80x30
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.355277] console [ttyS0] enabled
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.358765] Calibrating delay loop (skipped), value calculated using timer frequency.. 12.00 BogoMIPS (lpj=60000)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.369028] pid_max: default: 4096 minimum: 301
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.373628] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.380181] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.387780] CPU: Testing write buffer coherency: ok
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.392696] CPU0: update cpu_capacity 1024
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.396633] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.402492] Setting up static identity map for 0x20008240 - 0x20008270
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.612638] CPU1: update cpu_capacity 1024
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.612644] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.612748] Brought up 2 CPUs
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.625313] SMP: Total of 2 processors activated (24.00 BogoMIPS).
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.631479] CPU: All CPU(s) started in SVC mode.
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.636685] devtmpfs: initialized
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.653837] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.661639] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.671367] futex hash table entries: 16 (order: -2, 1024 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.678088] NET: Registered protocol family 16
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.682556] cma: cma_alloc(cma c03ffef0, count 64, align 4)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.682878] cma: cma_alloc(): returned c69cc000
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.683013] DMA: preallocated 256 KiB pool for atomic coherent allocations
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.691615]
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.691615]
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.691615] Version : MVX4##I2M#ga4addd9KL_LX409##[BR:main]#XVM
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.691615]
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    0.707367] GPIO: probe end
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.710312] [ss_gpi_intc_domain_alloc] hw:42 -> v:44
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.718747] [Padmux]reset Pad_47(reg 0x101e03; mask0x70) to GPIO(org: UART0_MODE_1)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.726655] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.734507] hw-breakpoint: maximum watchpoint size is 8 bytes.
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.750128] usbcore: registered new interface driver usbfs
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.755644] usbcore: registered new interface driver hub
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.760915] usbcore: registered new device driver usb
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.766024] Linux video capture interface: v2.00
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.771846] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.771935] cma: cma_alloc(): returned c69cc800
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.772290] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.772317] cma: cma_alloc(): returned c69cc820
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.773829] clocksource: Switched to clocksource arch_sys_counter
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.791801] NET: Registered protocol family 2
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.796623] TCP established hash table entries: 1024 (order: 0, 4096 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.803444] TCP bind hash table entries: 1024 (order: 2, 20480 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.809949] TCP: Hash tables configured (established 1024 bind 1024)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.816289] UDP hash table entries: 128 (order: 0, 6144 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.822066] UDP-Lite hash table entries: 128 (order: 0, 6144 bytes)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.828533] NET: Registered protocol family 1
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.833049] hw perfevents: enabled with armv7_cortex_a7 PMU driver, 5 counters available
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.843143] workingset: timestamp_bits=30 max_order=15 bucket_order=0
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.858130] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.866826] io scheduler noop registered
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.870591] io scheduler deadline registered (default)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.877600] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.877603] ehci monitor start running
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.887719] Mstar_ehc_init version:20180309
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.891975] Sstar-ehci-2 H.W init
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.895254] Titania3_series_start_ehc start
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.899383] [USB] config miu select [70] [e8] [ef] [ef]
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.904618] [USB] enable miu lower bound address subtraction
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.910261] [USB] init squelch level 0x2
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    0.915213] [USB] no platform_data, device tree coming
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.920193] [USB][EHC] dma coherent_mask 0xffffffffffffffff mask 0xffffffffffffffff
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    0.927884] BC disable
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.930288] [USB] soc:Sstar-ehci-2 irq --> 39
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.934678] Sstar-ehci-2 soc:Sstar-ehci-2: EHCI Host Controller
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.940584] Sstar-ehci-2 soc:Sstar-ehci-2: new USB bus registered, assigned bus number 1
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.948704] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.948754] cma: cma_alloc(): returned c69cc840
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.948770] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.948785] cma: cma_alloc(): returned c69cc860
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.948801] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    0.948818] cma: cma_alloc(): returned c69cc880
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.948902] Sstar-ehci-2 soc:Sstar-ehci-2: irq 39, io mem 0xfd285000
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.983994] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.990630] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    0.997868] usb usb1: Product: EHCI Host Controller
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.002727] usb usb1: Manufacturer: Linux 4.9.84 ehci_hcd
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.008136] usb usb1: SerialNumber: mstar
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.012839] hub 1-0:1.0: USB hub found
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.016493] hub 1-0:1.0: 1 port detected
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.020799] Sstar-ehci-1 H.W init
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.023977] Titania3_series_start_ehc start
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.028128] [USB] config miu select [70] [e8] [ef] [ef]
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.033348] [USB] enable miu lower bound address subtraction
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.039037] [USB] init squelch level 0x2
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    1.043930] [USB] no platform_data, device tree coming
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.048909] [USB][EHC] dma coherent_mask 0xffffffffffffffff mask 0xffffffffffffffff
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.056609] BC disable
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.059004] [USB] soc:Sstar-ehci-1 irq --> 38
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.063359] Sstar-ehci-1 soc:Sstar-ehci-1: EHCI Host Controller
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.069310] Sstar-ehci-1 soc:Sstar-ehci-1: new USB bus registered, assigned bus number 2
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    1.077422] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    1.077457] cma: cma_alloc(): returned c69cc8a0
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    1.077471] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    1.077487] cma: cma_alloc(): returned c69cc8c0
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    1.077502] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    1.077517] cma: cma_alloc(): returned c69cc8e0
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.077588] Sstar-ehci-1 soc:Sstar-ehci-1: irq 38, io mem 0xfd284800
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.103973] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.110608] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.117860] usb usb2: Product: EHCI Host Controller
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.122705] usb usb2: Manufacturer: Linux 4.9.84 ehci_hcd
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.128171] usb usb2: SerialNumber: mstar
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.132770] hub 2-0:1.0: USB hub found
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.136423] hub 2-0:1.0: 1 port detected
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.140786] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.146840] ohci-platform: OHCI generic platform driver
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.152318] [ss_gpi_intc_domain_alloc] hw:58 -> v:56
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.157317] i2c /dev entries driver
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.161221] usbcore: registered new interface driver uvcvideo
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.166830] USB Video Class driver (1.1.1)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.171050] 1f221000.uart0: ttyS0 at MMIO 0x0 (irq = 30, base_baud = 10800000) is a unknown
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.179627] 1f221200.uart1: ttyS1 at MMIO 0x0 (irq = 31, base_baud = 10800000) is a unknown
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.188230] 1f220400.uart2: ttyS2 at MMIO 0x0 (irq = 32, base_baud = 10800000) is a unknown
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.196819] 1f221400.uart2: ttyS3 at MMIO 0x0 (irq = 33, base_baud = 10800000) is a unknown
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.205871] [Core Voltage] check_voltage_valid: Not support 0mV, use 900mV
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.212976] ms_rtcpwc 1f006800.rtcpwc: rtc core: registered 1f006800.rtcpwc as rtc0
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.222102] [ms_cpufreq_init] Current clk=1005326304
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.227935] mstar_spinand_probe: mstar_spinand enableClock
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.233269] MSYS: DMEM request: [BDMA]:0x00000840
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    1.238018] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    1.238063] cma: cma_alloc(): returned c69cc900
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.238078] MSYS: DMEM request: [BDMA]:0x00000840 success, CPU phy:@0x26A48000, virt:@0xC6A48000
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.247184] MDrv_SPINAND_Init: Detected ID: MID =cd, DID =eb
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    1.252685] _dumpNandInformation:warning, Bytes / Page :  2048
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    1.258545] _dumpNandInformation:warning, Pages / Block:  64
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    1.264185] _dumpNandInformation:warning, Sector/ Page :  512
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    1.269918] _dumpNandInformation:warning, Spare / Page :  64
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    1.275601] _dumpNandInformation:warning, Current config r:4 w:4 drv:1
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.282326] mstar_spinand_probe: Magic memcmp pass
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.293852] mstar_spinand_probe: Get partition (Block 0 : page 1)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.300006] mstar_spinand_probe: CIS contains part info
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.305091] mstar_spinand_probe: Before nand_scan()...
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.310251] 13 cmdlinepart partitions found on MTD device nand0
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.316141] mstar_spinand_probe: Mtd parts parse
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.320410] ERROR: Bus[1] in ms_i2c_xfer_write: Slave dev NAK, Addr: 0xba, Data: 0x80 0x47
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.320421] Goodix-TS 1-005d: i2c test failed attempt 1: -110
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.335064] Creating 13 MTD partitions on "nand0":
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.339802] 0x000000140000-0x0000001a0000 : "IPL0"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.365343] 0x0000001a0000-0x000000200000 : "IPL1"
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.385205] ERROR: Bus[1] in ms_i2c_xfer_write: Slave dev NAK, Addr: 0xba, Data: 0x80 0x47
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.385341] 0x000000200000-0x000000260000 : "IPL_CUST0"
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.398836] Goodix-TS 1-005d: i2c test failed attempt 2: -110
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.404711] ==20180309==> hub_port_init 1 #0
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.405460] 0x000000260000-0x0000002c0000 : "IPL_CUST1"
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.414057] Plug in USB Port1
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.425407] 0x0000002c0000-0x000000380000 : "UBOOT0"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.433677] 0x000000380000-0x000000440000 : "UBOOT1"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.441947] 0x000000440000-0x0000004a0000 : "ENV0"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.449395] 0x0000004a0000-0x0000004c0000 : "KEY_CUST"
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.453857] Goodix-TS 1-005d: I2C communication failure: -110
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    1.453862] Goodix-TS 1-005d: touchscreen config failed!!!
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.467911] 0x0000004c0000-0x000000520000 : "LOGO"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.475083] 0x000000520000-0x000000580000 : "wtinfo"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.482676] 0x000000580000-0x000003580000 : "ubi"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.573498] 0x000003580000-0x000006580000 : "ubi2"
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.623842] usb 2-1: new high-speed USB device number 2 using Sstar-ehci-1
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.664509] 0x000006580000-0x000010000000 : "opt"
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.894310] usb 2-1: New USB device found, idVendor=1b20, idProduct=8888
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.900860] usb 2-1: New USB device strings: Mfr=16, Product=32, SerialNumber=0
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.908182] usb 2-1: Product: SigmaStarWIFI
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.912347] usb 2-1: Manufacturer: SigmaStar inc
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.942966] NET: Registered protocol family 17
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    1.947947] ThumbEE CPU extension supported.
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.952065] Registering SWP/SWPB emulation handler
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.957999] UBI: auto-attach mtd10
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    1.961245] ubi0: attaching mtd10
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.008242] UBI: EOF marker found, PEBs from 65 will be erased
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.083748] ubi0: scanning is finished
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.111761] ubi0: volume 2 ("rootfs_data") re-sized from 9 to 277 LEBs
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.119106] ubi0: attached mtd10 (name "ubi", size 48 MiB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.124471] ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.131311] ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.138114] ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.145077] ubi0: good PEBs: 384, bad PEBs: 0, corrupted PEBs: 0
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.151069] ubi0: user volume: 3, internal volumes: 1, max. volumes count: 128
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.158307] ubi0: max/mean erase counter: 4/2, WL threshold: 4096, image sequence number: 2041902205
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.167446] ubi0: available PEBs: 0, total reserved PEBs: 384, PEBs reserved for bad PEB handling: 40
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.176680] ubi0: background thread "ubi_bgt0d" started, PID 504
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    2.194697] block ubiblock0_1: created from ubi0:1(rootfs)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.200027] ubiblock: device ubiblock0_1 (rootfs) set to be root filesystem
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    2.244005] ms_rtcpwc 1f006800.rtcpwc: setting system clock to 1970-01-01 02:20:38 UTC (8438)
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    2.252612] OF: fdt:not creating '/sys/firmware/fdt': CRC check failed
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    2.271064] VFS: Mounted root (squashfs filesystem) readonly on device 254:0.
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    2.285890] devtmpfs: mounted
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    2.288719] This architecture does not have kernel memory protection.
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.134269] init: Console is alive
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.137696] init: - watchdog -
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.410332] kmodloader: loading kernel modules from /etc/modules-boot.d/*
+Thu Jan  1 02:20:44 1970 kern.warn kernel: [    3.458997] exfat: loading out-of-tree module taints kernel.
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    3.465798] exFAT: Version 1.2.9
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.473265] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.484058] init: - preinit -
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.690167] mount_root: loading kmods from internal overlay
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.711223] kmodloader: loading kernel modules from //etc/modules-boot.d/*
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.718471] kmodloader: done loading kernel modules from //etc/modules-boot.d/*
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    3.875712] UBIFS (ubi0:2): default file-system created
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    3.893921] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" started, PID 537
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    3.904444] random: procd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    3.936334] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    3.944045] UBIFS (ubi0:2): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    3.953959] UBIFS (ubi0:2): FS size: 33902592 bytes (32 MiB, 267 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    3.964397] UBIFS (ubi0:2): reserved for root: 1601302 bytes (1563 KiB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    3.971001] UBIFS (ubi0:2): media format: w4/r0 (latest is w4/r0), UUID EBD6295E-2217-4A76-B717-751F1BBC4C08, small LPT model
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.982969] block: attempting to load /tmp/ubifs_cfg/upper/etc/config/fstab
+Thu Jan  1 02:20:44 1970 user.err kernel: [    3.989918] block: unable to load configuration (fstab: Entry not found)
+Thu Jan  1 02:20:44 1970 user.info kernel: [    3.996553] block: attempting to load /tmp/ubifs_cfg/etc/config/fstab
+Thu Jan  1 02:20:44 1970 user.err kernel: [    4.002980] block: unable to load configuration (fstab: Entry not found)
+Thu Jan  1 02:20:44 1970 user.info kernel: [    4.009688] block: attempting to load /etc/config/fstab
+Thu Jan  1 02:20:44 1970 user.err kernel: [    4.014983] block: unable to load configuration (fstab: Entry not found)
+Thu Jan  1 02:20:44 1970 user.err kernel: [    4.021579] block: no usable configuration
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    4.069535] UBIFS (ubi0:2): un-mount UBI device 0
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    4.074122] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" stops
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    4.083649] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" started, PID 540
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    4.131339] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    4.139053] UBIFS (ubi0:2): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    4.148961] UBIFS (ubi0:2): FS size: 33902592 bytes (32 MiB, 267 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    4.159399] UBIFS (ubi0:2): reserved for root: 1601302 bytes (1563 KiB)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    4.166021] UBIFS (ubi0:2): media format: w4/r0 (latest is w4/r0), UUID EBD6295E-2217-4A76-B717-751F1BBC4C08, small LPT model
+Thu Jan  1 02:20:44 1970 user.info kernel: [    4.288025] block: attempting to load /tmp/ubifs_cfg/upper/etc/config/fstab
+Thu Jan  1 02:20:44 1970 user.err kernel: [    4.294970] block: unable to load configuration (fstab: Entry not found)
+Thu Jan  1 02:20:44 1970 user.info kernel: [    4.301581] block: attempting to load /tmp/ubifs_cfg/etc/config/fstab
+Thu Jan  1 02:20:44 1970 user.err kernel: [    4.308121] block: unable to load configuration (fstab: Entry not found)
+Thu Jan  1 02:20:44 1970 user.info kernel: [    4.314762] block: attempting to load /etc/config/fstab
+Thu Jan  1 02:20:44 1970 user.err kernel: [    4.319954] block: unable to load configuration (fstab: Entry not found)
+Thu Jan  1 02:20:44 1970 user.err kernel: [    4.326666] block: no usable configuration
+Thu Jan  1 02:20:44 1970 user.info kernel: [    4.375230] mount_root: overlay filesystem has not been fully initialized yet
+Thu Jan  1 02:20:44 1970 user.info kernel: [    4.382477] mount_root: switching to ubifs overlay
+Thu Jan  1 02:20:44 1970 user.err kernel: [    4.402692] urandom-seed: Seed file not found (/etc/urandom.seed)
+Thu Jan  1 02:20:44 1970 user.info kernel: [    4.457677] procd: - early -
+Thu Jan  1 02:20:44 1970 user.info kernel: [    4.460478] procd: - watchdog -
+Thu Jan  1 02:20:44 1970 user.info kernel: [    5.144004] procd: - watchdog -
+Thu Jan  1 02:20:44 1970 user.info kernel: [    5.147198] procd: - ubus -
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.198270] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.321262] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.344255] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.350763] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.357393] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.363910] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.370150] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.377140] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    5.383441] random: ubusd: uninitialized urandom read (4 bytes read)
+Thu Jan  1 02:20:44 1970 user.info kernel: [    5.390026] procd: - init -
+Thu Jan  1 02:20:44 1970 user.info kernel: [    6.046832] kmodloader: loading kernel modules from /etc/modules.d/*
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.074697] zram: Added device: zram0
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.108669] libphy: Fixed MDIO Bus: probed
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    6.117546] MSYS: DMEM request: [emac0_buff]:0x00000812
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    6.122636] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    6.122913] cma: cma_alloc(): returned c69cc920
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    6.122930] MSYS: DMEM request: [emac0_buff]:0x00000812 success, CPU phy:@0x26A49000, virt:@0xC6A49000
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.133011] libphy: mdio: probed
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    6.136171] mdio_bus mdio-bus@emac0: /soc/emac0/mdio-bus@emac0/ethernet-phy@0 has invalid PHY address
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.145507] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 0
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.165134] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 1
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.171624] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 2
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.178363] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 3
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.184891] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 4
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.191472] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 5
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.198194] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 6
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.204732] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 7
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.211311] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 8
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.217981] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 9
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.224563] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 10
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.231251] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 11
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.237989] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 12
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.244685] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 13
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.251346] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 14
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.258089] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 15
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.264769] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 16
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.271451] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 17
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.278238] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 18
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.284868] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 19
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.291557] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 20
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.298299] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 21
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.304995] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 22
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.311664] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 23
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.318397] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 24
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.325105] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 25
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.331769] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 26
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.338511] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 27
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.345207] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 28
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.351886] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 29
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.358618] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 30
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.365317] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 31
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    6.372143] [emac_phy_connect][3208] connected mac emac0 to PHY at mdio-bus@emac0:00 [uid=11112222, driver=Generic PHY]
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    6.383930] MSYS: DMEM request: [emac1_buff]:0x00060812
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    6.389018] cma: cma_alloc(cma c03ffef0, count 97, align 4)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    6.389139] cma: cma_alloc(): returned c69cca00
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    6.389354] MSYS: DMEM request: [emac1_buff]:0x00060812 success, CPU phy:@0x26A50000, virt:@0xC6A50000
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.399350] libphy: mdio: probed
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    6.402439] mdio_bus mdio-bus@emac1: /soc/emac1/mdio-bus@emac1/ethernet-phy@1 has invalid PHY address
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.411842] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 0
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.431621] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 1
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.451161] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 2
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.479003] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 3
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.501889] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 4
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.521409] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 5
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.541879] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 6
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.561815] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 7
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.581390] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 8
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.601314] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 9
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.621222] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 10
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.641001] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 11
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.661021] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 12
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.680907] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 13
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.700280] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 14
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.720196] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 15
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.740078] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 16
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.764684] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 17
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.784755] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 18
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.805814] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 19
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.825113] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 20
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.844696] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 21
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.864165] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 22
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.885253] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 23
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.904846] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 24
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.924367] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 25
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.945199] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 26
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.964909] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 27
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    6.984539] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 28
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.005689] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 29
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.025561] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 30
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.054411] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 31
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    7.074084] [emac_phy_connect][3208] connected mac emac1 to PHY at mdio-bus@emac1:00 [uid=00000000, driver=Generic PHY]
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.087852] >> [sdmmc] ms_sdmmc_probe
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    7.091574] cma: cma_alloc(cma c03ffef0, count 1, align 0)
+Thu Jan  1 02:20:44 1970 kern.debug kernel: [    7.091855] cma: cma_alloc(): returned c69cc940
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.091888] [Padmux]reset Pad_51(reg 0x101e08; mask0x300) to GPIO(org: SDIO_MODE_1)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.101077] >> [sdmmc_0] Probe Platform Devices
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.110129] nf_conntrack version 0.5.0 (2048 buckets, 8192 max)
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.142211] usbcore: registered new interface driver usbserial
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.149012] usbcore: registered new interface driver usbserial_generic
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.155867] usbserial: USB Serial support registered for generic
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.172390] xt_time: kernel timezone is -0000
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.178744] ip_tables: (C) 2000-2006 Netfilter Core Team
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.191500] PPP generic driver version 2.4.2
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.201801] usbcore: registered new interface driver option
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    7.207641] usbserial: USB Serial support registered for GSM modem (1-port)
+Thu Jan  1 02:20:44 1970 user.info kernel: [    7.216223] kmodloader: done loading kernel modules from /etc/modules.d/*
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    7.393938] phy: eth0 linkup
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    8.000812] [ss_gpi_intc_domain_alloc] hw:40 -> v:57
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    8.006389] [ss_gpi_intc_domain_alloc] hw:41 -> v:58
+Thu Jan  1 02:20:44 1970 kern.err kernel: [    8.017435] [ss_gpi_intc_domain_alloc] hw:39 -> v:59
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    8.114003] phy: eth1 linkdown
+Thu Jan  1 02:20:45 1970 kern.err kernel: [    9.044732] [ss_gpi_intc_domain_alloc] hw:2 -> v:60
+Thu Jan  1 02:20:45 1970 daemon.notice procd: /etc/rc.d/S15zram: sh: 0: unknown operand
+Thu Jan  1 02:20:45 1970 kern.notice kernel: [    9.297425] ubi1: attaching mtd12
+Thu Jan  1 02:20:45 1970 daemon.notice procd: /etc/rc.d/S15zram: zram_start: activating '/dev/zram0' for swapping (51 MegaBytes)
+Thu Jan  1 02:20:45 1970 daemon.debug zram_start: activating '/dev/zram0' for swapping (51 MegaBytes)
+Thu Jan  1 02:20:45 1970 daemon.notice procd: /etc/rc.d/S15zram: zram_reset: enforcing defaults via /sys/block/zram0/reset
+Thu Jan  1 02:20:45 1970 daemon.debug zram_reset: enforcing defaults via /sys/block/zram0/reset
+Thu Jan  1 02:20:45 1970 daemon.notice procd: /etc/rc.d/S15zram: zram_comp_streams: Set max compression streams to '2' for zram '/dev/zram0'
+Thu Jan  1 02:20:45 1970 daemon.debug zram_comp_streams: Set max compression streams to '2' for zram '/dev/zram0'
+Thu Jan  1 02:20:45 1970 daemon.notice procd: /etc/rc.d/S15zram: Setting up swapspace version 1, size = 53473280 bytes
+Thu Jan  1 02:20:45 1970 kern.info kernel: [    9.381680] zram0: detected capacity change from 0 to 53477376
+Thu Jan  1 02:20:45 1970 daemon.err block: failed to swapon /dev/zram0 (-1)
+Thu Jan  1 02:20:45 1970 user.notice dnsmasq: DNS rebinding protection is active, will discard upstream RFC1918 responses!
+Thu Jan  1 02:20:45 1970 user.notice dnsmasq: Allowing 127.0.0.0/8 responses
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: started, version 2.80 cachesize 150
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: DNS service limited to local subnets
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: compile time options: no-IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP no-DHCPv6 no-Lua TFTP no-conntrack no-ipset no-auth no-DNSSEC no-ID loop-detect inotify dumpfile
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: using local addresses only for domain test
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: using local addresses only for domain onion
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: using local addresses only for domain localhost
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: using local addresses only for domain local
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: using local addresses only for domain invalid
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: using local addresses only for domain bind
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: using local addresses only for domain lan
+Thu Jan  1 02:20:46 1970 daemon.warn dnsmasq[1710]: no servers found in /tmp/resolv.conf.auto, will retry
+Thu Jan  1 02:20:46 1970 daemon.err dnsmasq[1710]: bad address at /etc/hosts line 2
+Thu Jan  1 02:20:46 1970 daemon.err dnsmasq[1710]: bad address at /etc/hosts line 3
+Thu Jan  1 02:20:46 1970 daemon.err dnsmasq[1710]: bad address at /etc/hosts line 4
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: read /etc/hosts - 1 addresses
+Thu Jan  1 02:20:46 1970 daemon.info dnsmasq[1710]: read /tmp/hosts/dhcp.cfg01411c - 0 addresses
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.392811] ubi1: scanning is finished
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.409750] ubi1: attached mtd12 (name "opt", size 154 MiB)
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.415336] ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.422060] ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.429307] ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.436367] ubi1: good PEBs: 1236, bad PEBs: 0, corrupted PEBs: 0
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.442305] ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.449860] ubi1: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 1774918765
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.459136] ubi1: available PEBs: 0, total reserved PEBs: 1236, PEBs reserved for bad PEB handling: 40
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.468551] ubi1: background thread "ubi_bgt1d" started, PID 1745
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.573914] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" started, PID 1766
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.648734] UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "opt"
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.658948] UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.673334] UBIFS (ubi1:0): FS size: 149958656 bytes (143 MiB, 1181 LEBs), journal size 7491584 bytes (7 MiB, 59 LEBs)
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.688645] UBIFS (ubi1:0): reserved for root: 4952683 bytes (4836 KiB)
+Thu Jan  1 02:20:46 1970 kern.notice kernel: [   10.698440] UBIFS (ubi1:0): media format: w4/r0 (latest is w4/r0), UUID 7CEDE5C0-A5F9-4922-A0C4-521D4CE8CA05, small LPT model
+Thu Jan  1 02:20:47 1970 user.notice netifd: Added device handler type: tunnel
+Thu Jan  1 02:20:47 1970 user.notice netifd: Added device handler type: Network device
+Thu Jan  1 02:20:47 1970 user.notice netifd: Added device handler type: bridge
+Thu Jan  1 02:20:47 1970 user.notice netifd: Added device handler type: veth
+Thu Jan  1 02:20:47 1970 user.notice netifd: Added device handler type: macvlan
+Thu Jan  1 02:20:47 1970 user.notice netifd: Added device handler type: 8021ad
+Thu Jan  1 02:20:47 1970 user.notice netifd: Added device handler type: 8021q
+Thu Jan  1 02:20:47 1970 daemon.err block: /dev/ubiblock0_1 is already mounted on /rom
+Thu Jan  1 02:20:47 1970 daemon.err block: /dev/ubi0_2 is already mounted on /overlay
+Thu Jan  1 02:20:48 1970 kern.info kernel: [   11.921444] br-lan: port 1(eth0) entered blocking state
+Thu Jan  1 02:20:48 1970 kern.info kernel: [   11.929047] br-lan: port 1(eth0) entered disabled state
+Thu Jan  1 02:20:48 1970 kern.info kernel: [   11.944211] device eth0 entered promiscuous mode
+Thu Jan  1 02:20:48 1970 kern.info kernel: [   11.954785] br-lan: port 1(eth0) entered blocking state
+Thu Jan  1 02:20:48 1970 kern.info kernel: [   11.959878] br-lan: port 1(eth0) entered forwarding state
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Interface 'lan' is enabled
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Interface 'lan' is setting up now
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Interface 'lan' is now up
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Interface 'loopback' is enabled
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Interface 'loopback' is setting up now
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Interface 'loopback' is now up
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: bridge 'br-lan' link is up
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Interface 'lan' has link connectivity
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Network device 'eth0' link is up
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Network device 'lo' link is up
+Thu Jan  1 02:20:48 1970 daemon.notice netifd: Interface 'loopback' has link connectivity
+Thu Jan  1 02:20:48 1970 user.notice firewall: Reloading firewall due to ifup of lan (br-lan)
+Thu Jan  1 02:20:48 1970 daemon.err uhttpd[2045]: socket(): Address family not supported by protocol
+Thu Jan  1 02:20:48 1970 user.notice phy: linkup eth0
+Thu Jan  1 02:20:48 1970 user.notice phy: linkdown eth1
+Thu Jan  1 02:20:48 1970 user.notice ucitrack: Setting up /etc/config/network reload dependency on /etc/config/dhcp
+Thu Jan  1 02:20:48 1970 user.notice ucitrack: Setting up /etc/config/network reload dependency on /etc/config/radvd
+Thu Jan  1 02:20:48 1970 user.notice ucitrack: Setting up /etc/config/wireless reload dependency on /etc/config/network
+Thu Jan  1 02:20:48 1970 user.notice ucitrack: Setting up /etc/config/firewall reload dependency on /etc/config/luci-splash
+Thu Jan  1 02:20:48 1970 user.notice ucitrack: Setting up /etc/config/firewall reload dependency on /etc/config/qos
+Thu Jan  1 02:20:48 1970 user.notice ucitrack: Setting up /etc/config/firewall reload dependency on /etc/config/miniupnpd
+Thu Jan  1 02:20:49 1970 user.notice ucitrack: Setting up /etc/config/dhcp reload dependency on /etc/config/odhcpd
+Thu Jan  1 02:20:49 1970 user.notice ucitrack: Setting up non-init /etc/config/fstab reload handler: /sbin/block mount
+Thu Jan  1 02:20:49 1970 user.notice ucitrack: Setting up /etc/config/system reload trigger for non-procd /etc/init.d/led
+Thu Jan  1 02:20:49 1970 user.notice ucitrack: Setting up /etc/config/system reload dependency on /etc/config/luci_statistics
+Thu Jan  1 02:20:49 1970 user.notice ucitrack: Setting up /etc/config/system reload dependency on /etc/config/dhcp
+Thu Jan  1 02:20:49 1970 authpriv.info dropbear[2280]: Not backgrounding
+Thu Jan  1 02:20:50 1970 daemon.info procd: - init complete -
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[1710]: exiting on receipt of SIGTERM
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: started, version 2.80 cachesize 150
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: DNS service limited to local subnets
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: compile time options: no-IPv6 GNU-getopt no-DBus no-i18n no-IDN DHCP no-DHCPv6 no-Lua TFTP no-conntrack no-ipset no-auth no-DNSSEC no-ID loop-detect inotify dumpfile
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq-dhcp[2397]: DHCP, IP range 192.168.1.100 -- 192.168.1.249, lease time 12h
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: using local addresses only for domain test
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: using local addresses only for domain onion
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: using local addresses only for domain localhost
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: using local addresses only for domain local
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: using local addresses only for domain invalid
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: using local addresses only for domain bind
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: using local addresses only for domain lan
+Thu Jan  1 02:20:53 1970 daemon.warn dnsmasq[2397]: no servers found in /tmp/resolv.conf.auto, will retry
+Thu Jan  1 02:20:53 1970 daemon.err dnsmasq[2397]: bad address at /etc/hosts line 2
+Thu Jan  1 02:20:53 1970 daemon.err dnsmasq[2397]: bad address at /etc/hosts line 3
+Thu Jan  1 02:20:53 1970 daemon.err dnsmasq[2397]: bad address at /etc/hosts line 4
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: read /etc/hosts - 1 addresses
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: read /tmp/hosts/dhcp.cfg01411c - 1 addresses
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq-dhcp[2397]: read /etc/ethers - 0 addresses
+Thu Jan  1 02:20:53 1970 daemon.err dnsmasq[2397]: bad address at /etc/hosts line 2
+Thu Jan  1 02:20:53 1970 daemon.err dnsmasq[2397]: bad address at /etc/hosts line 3
+Thu Jan  1 02:20:53 1970 daemon.err dnsmasq[2397]: bad address at /etc/hosts line 4
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: read /etc/hosts - 1 addresses
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq[2397]: read /tmp/hosts/dhcp.cfg01411c - 1 addresses
+Thu Jan  1 02:20:53 1970 daemon.info dnsmasq-dhcp[2397]: read /etc/ethers - 0 addresses
+Thu Jan  1 02:21:01 1970 kern.notice kernel: [   25.605802] random: fast init done
+Thu Jan  1 02:21:01 1970 daemon.info urandom_seed[2352]: Seed saved (/etc/urandom.seed)
+Thu Jan  1 02:27:36 1970 daemon.err uhttpd[2045]: luci: accepted login on / for root from 192.168.1.88
+Thu Jan  1 02:30:47 1970 kern.notice kernel: [  611.060181] random: crng init done
+Thu Jan  1 04:20:17 1970 daemon.err uhttpd[2045]: sh: iptables: not found
+Thu Jan  1 04:20:17 1970 daemon.err uhttpd[2045]: sh: iptables: not found
+Thu Jan  1 04:20:17 1970 daemon.err uhttpd[2045]: sh: iptables: not found
+
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    0.000000] Kernel command line: 
+wt_board=WT2022 console=ttyS0,115200 rootfstype=squashfs,ubifs rootwait=1 LX_MEM=0x7f00000 
+mma_heap=mma_heap_name0,miu=0,sz=0x1000000 mma_memblock_remove=1 highres=off 
+mmap_reserved=fb,miu=0,sz=0x300000,max_start_off=0x7C00000,max_end_off=0x7F00000
+mtdparts=nand0:384k@1280k(IPL0),384k(IPL1),384k(IPL_CUST0),384k(IPL_CUST1),768k(UBOOT0),768k(UBOOT1),
+384k(ENV0),0x20000(KEY_CUST),0x60000(LOGO),0x60000(wtinfo),0x3000000(ubi),0x3000000(ubi2),-(opt)
+
+
+
+
+root@wireless-tag:/# cat /proc/partitions 
+major minor  #blocks  name
+
+  31        0        384 mtdblock0
+  31        1        384 mtdblock1
+  31        2        384 mtdblock2
+  31        3        384 mtdblock3
+  31        4        768 mtdblock4
+  31        5        768 mtdblock5
+  31        6        384 mtdblock6
+  31        7        128 mtdblock7
+  31        8        384 mtdblock8
+  31        9        384 mtdblock9
+  31       10      49152 mtdblock10
+  31       11      49152 mtdblock11
+  31       12     158208 mtdblock12
+ 254        0       5828 ubiblock0_1
+ 253        0      52224 zram0
+root@wireless-tag:/# cat /proc/mtd 
+dev:    size   erasesize  name
+mtd0: 00060000 00020000 "IPL0"
+mtd1: 00060000 00020000 "IPL1"
+mtd2: 00060000 00020000 "IPL_CUST0"
+mtd3: 00060000 00020000 "IPL_CUST1"
+mtd4: 000c0000 00020000 "UBOOT0"
+mtd5: 000c0000 00020000 "UBOOT1"
+mtd6: 00060000 00020000 "ENV0"
+mtd7: 00020000 00020000 "KEY_CUST"
+mtd8: 00060000 00020000 "LOGO"
+mtd9: 00060000 00020000 "wtinfo"
+mtd10: 03000000 00020000 "ubi"
+mtd11: 03000000 00020000 "ubi2"
+mtd12: 09a80000 00020000 "opt"
+root@wireless-tag:/# mount
+/dev/root on /rom type squashfs (ro,relatime)
+devtmpfs on /rom/dev type devtmpfs (rw,relatime,size=51564k,nr_inodes=12891,mode=755)
+proc on /proc type proc (rw,nosuid,nodev,noexec,noatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,noatime)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noatime)
+/dev/ubi0_2 on /overlay type ubifs (rw,noatime)
+overlayfs:/overlay on / type overlay (rw,noatime,lowerdir=/,upperdir=/overlay/upper,workdir=/overlay/work)
+tmpfs on /dev type tmpfs (rw,nosuid,relatime,size=512k,mode=755)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,mode=600,ptmxmode=000)
+debugfs on /sys/kernel/debug type debugfs (rw,noatime)
+ubi1:opt on /opt type ubifs (rw,relatime)
+root@wireless-tag:/# df -h
+Filesystem                Size      Used Available Use% Mounted on
+/dev/root                 5.8M      5.8M         0 100% /rom
+devtmpfs                 50.4M         0     50.4M   0% /rom/dev
+tmpfs                    51.4M    592.0K     50.8M   1% /tmp
+/dev/ubi0_2              29.2M     44.0K     27.7M   0% /overlay
+overlayfs:/overlay       29.2M     44.0K     27.7M   0% /
+tmpfs                   512.0K         0    512.0K   0% /dev
+ubi1:opt                131.6M     24.0K    126.9M   0% /opt
+root@wireless-tag:/# ls /dev/
+bus          mtd3         mtdblock8    tty22        tty45        ttyS1
+console      mtd3ro       mtdblock9    tty23        tty46        ttyS2
+emac0        mtd4         null         tty24        tty47        ttyS3
+emac1        mtd4ro       ppp          tty25        tty48        ubi0
+full         mtd5         ptmx         tty26        tty49        ubi0_0
+gpiochip0    mtd5ro       pts          tty27        tty5         ubi0_1
+i2c-0        mtd6         random       tty28        tty50        ubi0_2
+i2c-1        mtd6ro       rtc0         tty29        tty51        ubi1
+kmsg         mtd7         shm          tty3         tty52        ubi1_0
+log          mtd7ro       tty          tty30        tty53        ubi_ctrl
+mem          mtd8         tty0         tty31        tty54        ubiblock0_1
+ms_rtcwc     mtd8ro       tty1         tty32        tty55        urandom
+msys         mtd9         tty10        tty33        tty56        vcs
+mtd0         mtd9ro       tty11        tty34        tty57        vcs1
+mtd0ro       mtdblock0    tty12        tty35        tty58        vcsa
+mtd1         mtdblock1    tty13        tty36        tty59        vcsa1
+mtd10        mtdblock10   tty14        tty37        tty6         watchdog
+mtd10ro      mtdblock11   tty15        tty38        tty60        watchdog0
+mtd11        mtdblock12   tty16        tty39        tty61        zero
+mtd11ro      mtdblock2    tty17        tty4         tty62        zram0
+mtd12        mtdblock3    tty18        tty40        tty63
+mtd12ro      mtdblock4    tty19        tty41        tty7
+mtd1ro       mtdblock5    tty2         tty42        tty8
+mtd2         mtdblock6    tty20        tty43        tty9
+mtd2ro       mtdblock7    tty21        tty44        ttyS0
+
+
+=====ubiblock0_1
+Thu Jan  1 02:20:44 1970 kern.info kernel: [    2.194697] block ubiblock0_1: created from ubi0:1(rootfs)
+Thu Jan  1 02:20:44 1970 kern.notice kernel: [    2.200027] ubiblock: device ubiblock0_1 (rootfs) set to be root filesystem
+Thu Jan  1 02:20:47 1970 daemon.err block: /dev/ubiblock0_1 is already mounted on /rom
+Thu Jan  1 02:20:47 1970 daemon.err block: /dev/ubi0_2 is already mounted on /overlay
+
+
+root@wireless-tag:/# ubinfo  -a
+UBI version:                    1
+Count of UBI devices:           3
+UBI control device major/minor: 10:63
+Present UBI devices:            ubi0, ubi1, ubi2
+
+ubi0 --->/rom  and /overlay
+Volumes count:                           3
+Logical eraseblock size:                 126976 bytes, 124.0 KiB
+Total amount of logical eraseblocks:     384 (48758784 bytes, 46.5 MiB)
+Amount of available logical eraseblocks: 0 (0 bytes)
+Maximum count of volumes                 128
+Count of bad physical eraseblocks:       0
+Count of reserved physical eraseblocks:  40
+Current maximum erase counter value:     5
+Minimum input/output unit size:          2048 bytes
+Character device major/minor:            248:0
+Present volumes:                         0, 1, 2
+
+Volume ID:   0 (on ubi0)
+Type:        dynamic
+Alignment:   1
+Size:        16 LEBs (2031616 bytes, 1.9 MiB)
+State:       OK
+Name:        kernel
+Character device major/minor: 248:1
+-----------------------------------
+Volume ID:   1 (on ubi0)
+Type:        dynamic
+Alignment:   1
+Size:        47 LEBs (5967872 bytes, 5.6 MiB)
+State:       OK
+Name:        rootfs
+Character device major/minor: 248:2
+-----------------------------------
+Volume ID:   2 (on ubi0)
+Type:        dynamic
+Alignment:   1
+Size:        277 LEBs (35172352 bytes, 33.5 MiB)
+State:       OK
+Name:        rootfs_data
+Character device major/minor: 248:3
+
+===================================
+
+ubi1----->/opt
+Volumes count:                           1
+Logical eraseblock size:                 126976 bytes, 124.0 KiB
+Total amount of logical eraseblocks:     1236 (156942336 bytes, 149.6 MiB)
+Amount of available logical eraseblocks: 0 (0 bytes)
+Maximum count of volumes                 128
+Count of bad physical eraseblocks:       0
+Count of reserved physical eraseblocks:  40
+Current maximum erase counter value:     2
+Minimum input/output unit size:          2048 bytes
+Character device major/minor:            245:0
+Present volumes:                         0
+
+Volume ID:   0 (on ubi1)
+Type:        dynamic
+Alignment:   1
+Size:        1192 LEBs (151355392 bytes, 144.3 MiB)
+State:       OK
+Name:        opt
+Character device major/minor: 245:1
+
+===================================
+
+ubi2 ---append mount manual----default unmount; is the back of ubi0 ??
+Volumes count:                           3
+Logical eraseblock size:                 126976 bytes, 124.0 KiB
+Total amount of logical eraseblocks:     384 (48758784 bytes, 46.5 MiB)
+Amount of available logical eraseblocks: 0 (0 bytes)
+Maximum count of volumes                 128
+Count of bad physical eraseblocks:       0
+Count of reserved physical eraseblocks:  40
+Current maximum erase counter value:     2
+Minimum input/output unit size:          2048 bytes
+Character device major/minor:            244:0
+Present volumes:                         0, 1, 2
+
+Volume ID:   0 (on ubi2)
+Type:        dynamic
+Alignment:   1
+Size:        16 LEBs (2031616 bytes, 1.9 MiB)
+State:       OK
+Name:        kernel
+Character device major/minor: 244:1
+-----------------------------------
+Volume ID:   1 (on ubi2)
+Type:        dynamic
+Alignment:   1
+Size:        47 LEBs (5967872 bytes, 5.6 MiB)
+State:       OK
+Name:        rootfs
+Character device major/minor: 244:2
+-----------------------------------
+Volume ID:   2 (on ubi2)
+Type:        dynamic
+Alignment:   1
+Size:        277 LEBs (35172352 bytes, 33.5 MiB)
+State:       OK
+Name:        rootfs_data
+Character device major/minor: 244:3
+

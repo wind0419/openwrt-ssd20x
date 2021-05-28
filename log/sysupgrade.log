@@ -9,6 +9,30 @@ Sending KILL to remaining processes ...
 [ 1185.848817] sh (2583): drop_caches: 3
 Switching to ramdisk...
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+       /tmp/root # mount
+       proc on /proc type proc (rw,nosuid,nodev,noexec,noatime)
+       sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,noatime)
+       tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noatime)
+       tmpfs on /dev type tmpfs (rw,nosuid,relatime,size=512k,mode=755)
+       devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,mode=600,ptmxmode=000)
+       debugfs on /sys/kernel/debug type debugfs (rw,noatime)
+       tmpfs on / type tmpfs (rw,nosuid,nodev,noatime)
+       /tmp/root # df -h
+       sh: df: not found
+       /tmp/root # ls
+       bin      etc      mnt      proc     sys      usr
+       dev      lib      overlay  sbin     tmp
+       /tmp/root # ubi
+       ubiattach     ubidetach     ubimkvol      ubirsvol
+       ubiblock      ubiformat     ubirmvol      ubiupdatevol
+       /tmp/root # ubi
+       ubiattach     ubidetach     ubimkvol      ubirsvol
+       ubiblock      ubiformat     ubirmvol      ubiupdatevol
+       /tmp/root # ps
+       sh: ps: not found
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 [ 1189.164270] UBIFS (ubi1:0): un-mount UBI device 1
 [ 1189.168840] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" stops
 [ 1189.186512] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" stops
@@ -157,3 +181,38 @@ sstar_emac
 Wireless-tag# 
 Wireless-tag# 
 Wireless-tag# 
+
+root@wireless-tag:/# dmesg|grep mount
+[    3.092974] VFS: under CONFIG_MTD_ROOTFS_ROOT_DEV to mount_ubi_rootfs
+[    3.100300] VFS: to do_mount_root [squashfs] from cmdlines rootfstype
+[    3.119058] devtmpfs: mounted to [dev]
+[    4.483665] mount_root: loading kmods from internal overlay
+[    4.729589] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+[    4.842855] UBIFS (ubi0:2): un-mount UBI device 0
+[    4.914530] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+[    4.962817] mount_root: loading kmods from internal overlay
+[    5.168523] mount_root: switching to ubifs overlay
+[   11.616374] UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "opt"
+root@wireless-tag:/# 
+root@wireless-tag:/# df -h
+Filesystem                Size      Used Available Use% Mounted on
+/dev/root                 5.8M      5.8M         0 100% /rom
+devtmpfs                 50.4M         0     50.4M   0% /rom/dev
+tmpfs                    51.4M     52.0K     51.3M   0% /tmp
+/dev/ubi0_2              29.2M     48.0K     27.7M   0% /overlay
+overlayfs:/overlay       29.2M     48.0K     27.7M   0% /
+tmpfs                   512.0K         0    512.0K   0% /dev
+ubi1:opt                131.6M     24.0K    126.9M   0% /opt
+root@wireless-tag:/# mount
+/dev/root on /rom type squashfs (ro,relatime)
+devtmpfs on /rom/dev type devtmpfs (rw,relatime,size=51564k,nr_inodes=12891,mode=755)
+proc on /proc type proc (rw,nosuid,nodev,noexec,noatime)
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,noatime)
+tmpfs on /tmp type tmpfs (rw,nosuid,nodev,noatime)
+/dev/ubi0_2 on /overlay type ubifs (rw,noatime)
+overlayfs:/overlay on / type overlay (rw,noatime,lowerdir=/,upperdir=/overlay/upper,workdir=/overlay/work)
+tmpfs on /dev type tmpfs (rw,nosuid,relatime,size=512k,mode=755)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,mode=600,ptmxmode=000)
+debugfs on /sys/kernel/debug type debugfs (rw,noatime)
+ubi1:opt on /opt type ubifs (rw,relatime)
+

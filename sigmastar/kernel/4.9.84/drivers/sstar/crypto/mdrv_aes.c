@@ -68,7 +68,7 @@ int gbSupportAES256 = 1;
 int gbSupportAES256 = 0;
 #endif
 
-#define AESDMA_DEBUG (0)
+#define AESDMA_DEBUG (1)
 #if (AESDMA_DEBUG == 1)
 #define AESDMA_DBG(fmt, arg...) printk(KERN_ALERT fmt, ##arg)//KERN_DEBUG KERN_ALERT KERN_WARNING
 #else

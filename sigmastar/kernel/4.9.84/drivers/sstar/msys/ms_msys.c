@@ -44,11 +44,12 @@
 #include "mdrv_msys_io.h"
 #include "platform_msys.h"
 #include "mdrv_verchk.h"
-
 #include "mdrv_system.h"
+
 #ifdef CONFIG_MS_CPU_FREQ
 #include "cpu_freq.h"
 #endif
+
 #include "cam_os_wrapper.h"
 
 //#define CONFIG_MS_SYSTEM_PART_STRING /*used to in I3*/
@@ -57,6 +58,7 @@
 //#define CONFIG_IOCTL_MSYS_MIU_PROTECT /*used to in I3*/
 //#define CONFIG_MS_US_TICK_API
 //#define CONFIG_MS_PIU_TICK_API
+
 #define CONFIG_IOCTL_MSYS_USER_TO_PHYSICAL
 #define CONFIG_IOCTL_MSYS_DMEM
 #ifdef CONFIG_ARCH_INFINITY2
@@ -68,7 +70,7 @@
 
 
 
-#define MSYS_DEBUG                   0
+#define MSYS_DEBUG                   1
 #define MINOR_SYS_NUM               128
 #define MAJOR_SYS_NUM               233
 
@@ -87,7 +89,10 @@ extern void Chip_Flush_Memory(void);
 static int msys_open(struct inode *inode, struct file *filp);
 static int msys_release(struct inode *inode, struct file *filp);
 static long msys_ioctl(struct file *filp, unsigned int cmd, unsigned long arg);
-
+static ssize_t
+msys_test_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos);
+static ssize_t
+msys_test_read(struct file *file,  char __user *buf, size_t count, loff_t *ppos);
 typedef struct
 {
   MSYS_PROC_DEVICE proc_dev;
@@ -108,6 +113,8 @@ static struct file_operations msys_fops = {
     .owner = THIS_MODULE,
     .open = msys_open,
     .release = msys_release,
+    .write = msys_test_write,
+    .read = msys_test_read,
     .unlocked_ioctl=msys_ioctl,
 };
 
@@ -226,6 +233,27 @@ static int msys_release(struct inode *inode, struct file *filp)
     return 0;
 }
 
+int msys_request_dmem(MSYS_DMEM_INFO *mem_info);
+int msys_release_dmem(MSYS_DMEM_INFO *mem_info);
+static char test_dmem[16] = "";
+static ssize_t
+msys_test_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
+{
+    MSYS_DMEM_INFO mem_info;
+    mem_info.length = SZ_1M;
+    strcpy(mem_info.name, (char*)buf);
+    strcpy(test_dmem, (char*)buf);
+    return msys_request_dmem(&mem_info);
+}
+
+static ssize_t
+msys_test_read(struct file *file, char __user *buf, size_t count, loff_t *ppos)
+{
+    MSYS_DMEM_INFO mem_info;
+    strcpy(mem_info.name, test_dmem);
+    strcpy(buf, test_dmem);
+    return msys_release_dmem(&mem_info);
+}
 
 int msys_fix_dmem(char* name)
 {
@@ -488,7 +516,7 @@ int msys_request_dmem(MSYS_DMEM_INFO *mem_info)
 		return -EFAULT;
 	}*/
 
-    MSYS_ERROR("DMEM request: [%s]:0x%08X\n",mem_info->name,(unsigned int)mem_info->length);
+    MSYS_ERROR("DMEM request: [%s]:0x%08X Bytes\n",mem_info->name,(unsigned int)mem_info->length);
 
     mutex_lock(&dmem_mutex);
 //  if(mem_info->name[0]!=0)
@@ -1729,6 +1757,7 @@ static ssize_t release_dmem_store(struct device *dev, struct device_attribute *a
 }
 DEVICE_ATTR(release_dmem, 0200, NULL, release_dmem_store);
 
+#define CONFIG_MSYS_DMEM_SYSFS_ALL  "test"
 #ifdef CONFIG_MSYS_DMEM_SYSFS_ALL
 static ssize_t dmem_realloc_show(struct device *dev, struct device_attribute *attr, char *buf)
 {

@@ -517,6 +517,7 @@ struct file_handler file_handler_table[] = {
 
 #define LINE_SIZE (2 * PATH_MAX + 50)
 
+#error "test not compile gen_init_cpio.c"
 int main (int argc, char *argv[])
 {
 	FILE *cpio_list;

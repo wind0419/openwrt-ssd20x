@@ -222,6 +222,7 @@ static const void * __init arch_get_next_mach(const char *const **match)
 const struct machine_desc * __init setup_machine_fdt(unsigned int dt_phys)
 {
 	const struct machine_desc *mdesc, *mdesc_best = NULL;
+	void *virt_p = NULL;
 
 #if defined(CONFIG_ARCH_MULTIPLATFORM) || defined(CONFIG_ARM_SINGLE_ARMV7M)
 	DT_MACHINE_START(GENERIC_DT, "Generic DT based system")
@@ -232,16 +233,18 @@ const struct machine_desc * __init setup_machine_fdt(unsigned int dt_phys)
 	mdesc_best = &__mach_desc_GENERIC_DT;
 #endif
 
-	if (!dt_phys || !early_init_dt_verify(phys_to_virt(dt_phys)))
+	virt_p = phys_to_virt(dt_phys);
+	early_print("to check atags dtb phys %p, virt %p\n", (void*)dt_phys, virt_p);
+	if (!dt_phys || !early_init_dt_verify(virt_p))
 	{
 #ifdef CONFIG_SS_BUILTIN_DTB
 		if(early_init_dt_verify(builtin_dtb_start))
 		{
 			extern int early_atags_to_fdt(void *atag_list, void *fdt, int total_space);
 			extern u32 builtin_dtb_size;
-
-//			early_print("early_init_dt_verify() pass...\n");
-			if((!dt_phys ) || (!early_atags_to_fdt(phys_to_virt(dt_phys),builtin_dtb_start,builtin_dtb_size)))
+			
+			//early_print("early_init_dt_verify() pass...\n");
+			if((!dt_phys ) || (!early_atags_to_fdt(virt_p, builtin_dtb_start, builtin_dtb_size)))
 			{
 				early_print("early_atags_to_fdt() success\n");
 			}

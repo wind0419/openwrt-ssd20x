@@ -13,6 +13,8 @@
 
 #define pr_fmt(fmt) "cma: " fmt
 
+#define CONFIG_CMA_DEBUG "test"
+
 #ifdef CONFIG_CMA_DEBUG
 #ifndef DEBUG
 #  define DEBUG

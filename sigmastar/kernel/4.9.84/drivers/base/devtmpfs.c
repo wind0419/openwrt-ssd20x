@@ -358,7 +358,7 @@ int devtmpfs_mount(const char *mntdir)
 	if (err)
 		printk(KERN_INFO "devtmpfs: error mounting %i\n", err);
 	else
-		printk(KERN_INFO "devtmpfs: mounted\n");
+		printk(KERN_INFO "devtmpfs: mounted to [%s]\n", mntdir);
 	return err;
 }
 
@@ -367,6 +367,9 @@ static DECLARE_COMPLETION(setup_done);
 static int handle(const char *name, umode_t mode, kuid_t uid, kgid_t gid,
 		  struct device *dev)
 {
+	printk(KERN_INFO "devtmpfs: %s node [%s] dev-name [%s]\n", 
+		(int)mode>0?"create":"remove", name, dev->init_name);
+	
 	if (mode)
 		return handle_create(name, mode, uid, gid, dev);
 	else
@@ -438,6 +441,6 @@ int __init devtmpfs_init(void)
 		return err;
 	}
 
-	printk(KERN_INFO "devtmpfs: initialized\n");
+	printk(KERN_INFO "devtmpfs: initialized at devtmpfs_init\n");
 	return 0;
 }

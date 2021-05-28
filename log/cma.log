@@ -1,0 +1,642 @@
+bootargs = "wt_board=WT2022 console=ttyS0,115200 rootfstype=squashfs,ubifs rootwait=1 
+cma=8M 
+LX_MEM=0x7f00000 mma_heap=mma_heap_name0,miu=0,sz=0x1000000=16M
+ mma_memblock_remove=1 highres=off mmap_reserved=fb,miu=0,sz=0x300000=3M,
+ max_start_off=0x7C00000,max_end_off=0x7F00000";
+
+
+-----arch/arm/kernel/vmlinux.lds----
+ . = 0xC0000000 + 0x00008000;
+ .head.text : {
+  _text = .;
+  *(.head.text)
+ }
+
+ or to check System.map
+ 00000024 A cpu_ca8_suspend_size
+00000024 A cpu_v7_suspend_size
+0000002c A cpu_ca9mp_suspend_size
+c0004000 A swapper_pg_dir
+swapper_pg_dir用于存放内核PGD页表的地方，赋给init_mm.pgd。
+swapper_pg_dir被定义了绝对地址，在arch/arm/kernel/head.S中有如下定义。
+swapper_pd_dir的大小为16KB，对应的虚拟地址空间是从0xc0004000 - 0xc0008000
+c0008000 T _text            ---------link address is run address----------
+c0008000 T stext
+c0008090 t __create_page_tables
+c0008128 t __turn_mmu_on_loc
+c0008134 t __fixup_smp
+-------------------------------------
+
+##  Booting kernel from Legacy Image at 22000000 ...
+   Image Name:   MVX4##I2M#gada1129KL_LX409##[BR:
+   Image Type:   ARM Linux Kernel Image (lzma compressed)
+   Data Size:    2054220 Bytes = 2 MiB
+   Load Address: 20008000
+   Entry Point:  20008000
+   Verifying Checksum ... OK
+-usb_stop(USB_PORT0)
+-usb_stop(USB_PORT1)
+-usb_stop(USB_PORT2)
+   Uncompressing Kernel Image ... 
+[XZ] !!!reserved 0x21000000 length=0x 1000000 for xz!!
+   XZ: uncompressed size=0x41d000, ret=7
+OK
+atags:0x20000000
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.9.84 (gwind@gwind-P5820T) (gcc version 8.2.1 20180802 (GNU Toolchain for the A-profile Architecture 8.2-2018-08 (arm-rel-8.1
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+
+------ at arch/arm/kernel/devtree.c  setup_machine_fdt ----
+[    0.000000] to check atags dtb phys 20000000, virt c0000000   [uboot set atags:0x20000000 ]
+[    0.000000] early_atags_to_fdt() success
+
+[    0.000000] OF: fdt:Machine model: INFINITY2M SSC011A-S01A-S By Wind
+[    0.000000] LXmem is 0x7f00000 PHYS_OFFSET is 0x20000000
+[    0.000000] Add mem start 0x20000000 size 0x7f00000!!!!
+[    0.000000] 
+[    0.000000] LX_MEM  = 0x20000000, 0x7f00000  (16*7=112+15=127MB)
+[    0.000000] LX_MEM2 = 0x0, 0x0
+[    0.000000] LX_MEM3 = 0x0, 0x0
+[    0.000000] EMAC_LEN= 0x0
+[    0.000000] DRAM_LEN= 0x0
+
+----the phy highest address is 0x27f00000, reserved address is come down, so reserved highlevel memory
+
+----mmap_reserved=fb,miu=0,sz=0x300000=3M
+
+[    0.000000] deal_with_reserved_mmap memblock_reserve success mmap_reserved_config[0].reserved_start=
+[    0.000000] 0x27c00000 == 0x27f00000 - 3M(0x00300000)
+[    0.000000] 
+---mma_heap=mma_heap_name0,miu=0,sz=0x1000000=16M
+[    0.000000] deal_with_reserve_mma_heap memblock_reserve success mma_config[0].reserved_start=
+[    0.000000] 0x26c00000 == 0x27c00000 - 16M(0x1000000)
+
+---cma size = 8M
+[    0.000000] ----old log cma: Reserved 2 MiB at 0x26a00000----
+[    0.000000] cma: Reserved 8 MiB at 0x26400000 = 0x26c00000 - 8M
+
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] percpu: Embedded 13 pages/cpu @c62bc000 s21208 r8192 d23848 u53248
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 28162
+
+[    0.000000] Kernel command line: wt_board=WT2022 console=ttyS0,115200 rootfstype=squashfs,ubifs rootwait=1 cma=8M LX_MEM=0x7f00000 mma_heap=mma_heap_na)
+[    0.000000] PID hash table entries: 512 (order: -1, 2048 bytes)
+[    0.000000] Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+--------
+[    0.000000] Memory: 96736K/113664K(111M) available 
+(2467K kernel code, 222K rwdata, 1212K rodata, 164K init, 174K bss, 8736K reserved, 8192K cma-reserved)
+-----------------------------------------------------------------------
+CONFIG_PAGE_OFFSET=0xC0000000
+
+.text、.init、.data、.bss都属于lowmem区域，也即ZONE_NORMAL；
+vector、fixmap、vmalloc属于ZONE_HIGHMEM区域。
+pkmap、modules属于用户空间
+lowmem是线性映射区,1:1映射到物理地址
+vmalloc,虚拟内存申请的地址范围,用于给vmalloc/ioremap动态分配内存,
+vmalloc区域和lowmem区域之间有一个8MB的hole
+lowmem区域是线性映射，可以虚拟地址和物理地址是1:1对应的。
+这个8MB由于捕获虚拟地址的越界访问
+sstar 只有1MB的GAP
+---------------------------------------------------------------------
+fixmap 固定虚拟地址映射区， 在MMU表为完全初始化之前使用，比如linux启动初期，
+在head.S中进行PGD、PUD,PMD等小范围的地址映射以满足kernel setup动作，
+其中包含了dtb以及console的地址范围
+
+sigmastar/kernel/4.9.84/arch/arm/include/asm/fixmap.h
+#define FIXADDR_START		0xffc00000UL
+#define FIXADDR_END		0xfff00000UL
+#define FIXADDR_TOP		(FIXADDR_END - PAGE_SIZE)
+
+---------------------------------------------------------------
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xc8000000 - 0xff800000   ( 888 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xc7f00000   ( 127 MB)
+[    0.000000]     modules : 0xbf800000 - 0xc0000000   (   8 MB)   ----user space(0-c000000)
+[    0.000000]       .text : 0xc0008000 - 0xc02710a8   (2469 kB)
+[    0.000000]       .init : 0xc03c3000 - 0xc03ec000   ( 164 kB)
+[    0.000000]       .data : 0xc03ec000 - 0xc0423bd8   ( 223 kB)
+[    0.000000]        .bss : 0xc0425000 - 0xc04509e0   ( 175 kB)
+
+
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000]  Build-time adjustment of leaf fanout to 32.
+[    0.000000]  RCU restricting CPUs from NR_CPUS=4 to nr_cpu_ids=2.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=2
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] ms_init_main_intc: np->name=ms_main_intc, parent=gic
+[    0.000000] ms_init_pm_intc: np->name=ms_pm_intc, parent=ms_main_intc
+[    0.000000] ss_init_gpi_intc: np->name=ms_gpi_intc, parent=ms_main_intc
+[    0.000000] Find CLK_cpupll_clk, hook ms_cpuclk_ops
+[    0.000000] arm_arch_timer: Architected cp15 timer(s) running at 6.00MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1623fa770, max_idle_ns: 440795202238 ns
+[    0.000005] sched_clock: 56 bits at 6MHz, resolution 166ns, wraps every 4398046511055ns
+[    0.000017] Switching to timer-based delay loop, resolution 166ns
+[    0.000384] Console: colour dummy device 80x30
+[    0.355804] console [ttyS0] enabled
+[    0.359295] Calibrating delay loop (skipped), value calculated using timer frequency.. 12.00 BogoMIPS (lpj=60000)
+[    0.369556] pid_max: default: 4096 minimum: 301
+[    0.374156] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.380709] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.388309] CPU: Testing write buffer coherency: ok
+[    0.393226] CPU0: update cpu_capacity 1024
+[    0.397163] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.403015] Setting up static identity map for 0x20008240 - 0x20008270
+[    0.613158] CPU1: update cpu_capacity 1024
+[    0.613164] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.613268] Brought up 2 CPUs
+[    0.625834] SMP: Total of 2 processors activated (24.00 BogoMIPS).
+[    0.631999] CPU: All CPU(s) started in SVC mode.
+[    0.637194] devtmpfs: initialized at devtmpfs_init
+[    0.655892] VFP support v0.3: implementor 41 architecture 2 part 30 variant 7 rev 5
+[    0.663690] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.673421] futex hash table entries: 16 (order: -2, 1024 bytes)
+[    0.680361] NET: Registered protocol family 16
+[    0.685267] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.693885] 
+[    0.693885] 
+[    0.693885] Version : MVX4##I2M#gada1129KL_LX409##[BR:main]#XVM
+[    0.693885] 
+[    0.709394] devtmpfs: create node [gpiochip0] dev-name [(null)]
+[    0.715421] GPIO: probe end[    0.718369] [ss_gpi_intc_domain_alloc] hw:42 -> v:44
+[    0.726803] [Padmux]reset Pad_47(reg 0x101e03; mask0x70) to GPIO(org: UART0_MODE_1)
+[    0.734711] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.742562] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.759009] usbcore: registered new interface driver usbfs
+[    0.764480] usbcore: registered new interface driver hub
+[    0.769813] usbcore: registered new device driver usb
+[    0.774877] Linux video capture interface: v2.00
+[    0.779582] devtmpfs: create node [msys] dev-name [(null)]
+[    0.788769] clocksource: Switched to clocksource arch_sys_counter
+[    0.795075] devtmpfs: create node [mem] dev-name [(null)]
+[    0.800505] devtmpfs: create node [null] dev-name [(null)]
+[    0.805978] devtmpfs: create node [zero] dev-name [(null)]
+[    0.811495] devtmpfs: create node [full] dev-name [(null)]
+[    0.816974] devtmpfs: create node [random] dev-name [(null)]
+[    0.822673] devtmpfs: create node [urandom] dev-name [(null)]
+[    0.828408] devtmpfs: create node [kmsg] dev-name [(null)]
+[    0.833929] devtmpfs: create node [tty] dev-name [(null)]
+[    0.839500] devtmpfs: create node [console] dev-name [(null)]
+[    0.845236] devtmpfs: create node [tty0] dev-name [(null)]
+[    0.850860] devtmpfs: create node [vcs] dev-name [(null)]
+[    0.856243] devtmpfs: create node [vcsa] dev-name [(null)]
+[    0.861757] devtmpfs: create node [vcs1] dev-name [(null)]
+[    0.867221] devtmpfs: create node [vcsa1] dev-name [(null)]
+[    0.872846] devtmpfs: create node [tty1] dev-name [(null)]
+[    0.878330] devtmpfs: create node [tty2] dev-name [(null)]
+[    0.883831] devtmpfs: create node [tty3] dev-name [(null)]
+[    0.889372] devtmpfs: create node [tty4] dev-name [(null)]
+[    0.894841] devtmpfs: create node [tty5] dev-name [(null)]
+[    0.900354] devtmpfs: create node [tty6] dev-name [(null)]
+[    0.905837] devtmpfs: create node [tty7] dev-name [(null)]
+[    0.911363] devtmpfs: create node [tty8] dev-name [(null)]
+[    0.916828] devtmpfs: create node [tty9] dev-name [(null)]
+[    0.922340] devtmpfs: create node [tty10] dev-name [(null)]
+[    0.927903] devtmpfs: create node [tty11] dev-name [(null)]
+[    0.933527] devtmpfs: create node [tty12] dev-name [(null)]
+[    0.939113] devtmpfs: create node [tty13] dev-name [(null)]
+[    0.944668] devtmpfs: create node [tty14] dev-name [(null)]
+[    0.950302] devtmpfs: create node [tty15] dev-name [(null)]
+[    0.955855] devtmpfs: create node [tty16] dev-name [(null)]
+[    0.961466] devtmpfs: create node [tty17] dev-name [(null)]
+[    0.967018] devtmpfs: create node [tty18] dev-name [(null)]
+[    0.972663] devtmpfs: create node [tty19] dev-name [(null)]
+[    0.978218] devtmpfs: create node [tty20] dev-name [(null)]
+[    0.983821] devtmpfs: create node [tty21] dev-name [(null)]
+[    0.989434] devtmpfs: create node [tty22] dev-name [(null)]
+[    0.994988] devtmpfs: create node [tty23] dev-name [(null)]
+[    1.000601] devtmpfs: create node [tty24] dev-name [(null)]
+[    1.006156] devtmpfs: create node [tty25] dev-name [(null)]
+[    1.011788] devtmpfs: create node [tty26] dev-name [(null)]
+[    1.017348] devtmpfs: create node [tty27] dev-name [(null)]
+[    1.022947] devtmpfs: create node [tty28] dev-name [(null)]
+[    1.028502] devtmpfs: create node [tty29] dev-name [(null)]
+[    1.034128] devtmpfs: create node [tty30] dev-name [(null)]
+[    1.039712] devtmpfs: create node [tty31] dev-name [(null)]
+[    1.045276] devtmpfs: create node [tty32] dev-name [(null)]
+[    1.050898] devtmpfs: create node [tty33] dev-name [(null)]
+[    1.056448] devtmpfs: create node [tty34] dev-name [(null)]
+[    1.062056] devtmpfs: create node [tty35] dev-name [(null)]
+[    1.067594] devtmpfs: create node [tty36] dev-name [(null)]
+[    1.073201] devtmpfs: create node [tty37] dev-name [(null)]
+[    1.078715] devtmpfs: create node [tty38] dev-name [(null)]
+[    1.084306] devtmpfs: create node [tty39] dev-name [(null)]
+[    1.089898] devtmpfs: create node [tty40] dev-name [(null)]
+[    1.095429] devtmpfs: create node [tty41] dev-name [(null)]
+[    1.101019] devtmpfs: create node [tty42] dev-name [(null)]
+[    1.106570] devtmpfs: create node [tty43] dev-name [(null)]
+[    1.112166] devtmpfs: create node [tty44] dev-name [(null)]
+[    1.117708] devtmpfs: create node [tty45] dev-name [(null)]
+[    1.123299] devtmpfs: create node [tty46] dev-name [(null)]
+[    1.128879] devtmpfs: create node [tty47] dev-name [(null)]
+[    1.134418] devtmpfs: create node [tty48] dev-name [(null)]
+[    1.140013] devtmpfs: create node [tty49] dev-name [(null)]
+[    1.145562] devtmpfs: create node [tty50] dev-name [(null)]
+[    1.151150] devtmpfs: create node [tty51] dev-name [(null)]
+[    1.156701] devtmpfs: create node [tty52] dev-name [(null)]
+[    1.162307] devtmpfs: create node [tty53] dev-name [(null)]
+[    1.167842] devtmpfs: create node [tty54] dev-name [(null)]
+[    1.173428] devtmpfs: create node [tty55] dev-name [(null)]
+[    1.178996] devtmpfs: create node [tty56] dev-name [(null)]
+[    1.184558] devtmpfs: create node [tty57] dev-name [(null)]
+[    1.190151] devtmpfs: create node [tty58] dev-name [(null)]
+[    1.195694] devtmpfs: create node [tty59] dev-name [(null)]
+[    1.201278] devtmpfs: create node [tty60] dev-name [(null)]
+[    1.206832] devtmpfs: create node [tty61] dev-name [(null)]
+[    1.212422] devtmpfs: create node [tty62] dev-name [(null)]
+[    1.217975] devtmpfs: create node [tty63] dev-name [(null)]
+[    1.223603] NET: Registered protocol family 2
+[    1.228399] TCP established hash table entries: 1024 (order: 0, 4096 bytes)
+[    1.235332] TCP bind hash table entries: 1024 (order: 2, 20480 bytes)
+[    1.241707] TCP: Hash tables configured (established 1024 bind 1024)
+[    1.248043] UDP hash table entries: 128 (order: 0, 6144 bytes)
+[    1.253943] UDP-Lite hash table entries: 128 (order: 0, 6144 bytes)
+[    1.260303] NET: Registered protocol family 1
+[    1.264826] hw perfevents: enabled with armv7_cortex_a7 PMU driver, 5 counters available
+[    1.274876] workingset: timestamp_bits=30 max_order=15 bucket_order=0
+[    1.290051] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    1.298718] io scheduler noop registered
+[    1.302507] io scheduler deadline registered (default)
+[    1.308282] devtmpfs: create node [ptmx] dev-name [(null)]
+[    1.314923] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.321325] ehci monitor start running
+[    1.325040] Mstar_ehc_init version:20180309
+[    1.329307] Sstar-ehci-2 H.W init
+[    1.332536] Titania3_series_start_ehc start
+[    1.336703] [USB] config miu select [70] [e8] [ef] [ef]
+[    1.341942] [USB] enable miu lower bound address subtraction
+[    1.347582] [USB] init squelch level 0x2
+[    1.352517] [USB] no platform_data, device tree coming
+[    1.357497] [USB][EHC] dma coherent_mask 0xffffffffffffffff mask 0xffffffffffffffff
+[    1.365194] BC disable 
+[    1.367592] [USB] soc:Sstar-ehci-2 irq --> 39
+[    1.371962] Sstar-ehci-2 soc:Sstar-ehci-2: EHCI Host Controller
+[    1.377889] Sstar-ehci-2 soc:Sstar-ehci-2: new USB bus registered, assigned bus number 1
+[    1.386185] Sstar-ehci-2 soc:Sstar-ehci-2: irq 39, io mem 0xfd285000
+[    1.418946] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.425582] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.432826] usb usb1: Product: EHCI Host Controller
+[    1.437678] usb usb1: Manufacturer: Linux 4.9.84 ehci_hcd
+[    1.443101] usb usb1: SerialNumber: mstar
+[    1.447333] devtmpfs: create node [bus/usb/001/001] dev-name [(null)]
+[    1.454105] hub 1-0:1.0: USB hub found
+[    1.457723] hub 1-0:1.0: 1 port detected
+[    1.462094] Sstar-ehci-1 H.W init
+[    1.465257] Titania3_series_start_ehc start
+[    1.469445] [USB] config miu select [70] [e8] [ef] [ef]
+[    1.474645] [USB] enable miu lower bound address subtraction
+[    1.480312] [USB] init squelch level 0x2
+[    1.485225] [USB] no platform_data, device tree coming
+[    1.490219] [USB][EHC] dma coherent_mask 0xffffffffffffffff mask 0xffffffffffffffff
+[    1.497881] BC disable 
+[    1.500309] [USB] soc:Sstar-ehci-1 irq --> 38
+[    1.504654] Sstar-ehci-1 soc:Sstar-ehci-1: EHCI Host Controller
+[    1.510605] Sstar-ehci-1 soc:Sstar-ehci-1: new USB bus registered, assigned bus number 2
+[    1.518869] Sstar-ehci-1 soc:Sstar-ehci-1: irq 38, io mem 0xfd284800
+[    1.548921] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002
+[    1.555557] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    1.562817] usb usb2: Product: EHCI Host Controller
+[    1.567653] usb usb2: Manufacturer: Linux 4.9.84 ehci_hcd
+[    1.573118] usb usb2: SerialNumber: mstar
+[    1.577271] devtmpfs: create node [bus/usb/002/001] dev-name [(null)]
+[    1.584010] hub 2-0:1.0: USB hub found
+[    1.587626] hub 2-0:1.0: 1 port detected
+[    1.592045] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.598083] ohci-platform: OHCI generic platform driver
+[    1.603603] [ss_gpi_intc_domain_alloc] hw:58 -> v:56
+[    1.608565] i2c /dev entries driver
+[    1.612070] devtmpfs: create node [i2c-0] dev-name [(null)]
+[    1.617672] devtmpfs: create node [i2c-1] dev-name [(null)]
+[    1.623375] usbcore: registered new interface driver uvcvideo
+[    1.628984] USB Video Class driver (1.1.1)
+[    1.633205] 1f221000.uart0: ttyS0 at MMIO 0x0 (irq = 30, base_baud = 10800000) is a unknown
+[    1.641620] devtmpfs: create node [ttyS0] dev-name [(null)]
+[    1.647224] 1f221200.uart1: ttyS1 at MMIO 0x0 (irq = 31, base_baud = 10800000) is a unknown
+[    1.655606] devtmpfs: create node [ttyS1] dev-name [(null)]
+[    1.661308] 1f220400.uart2: ttyS2 at MMIO 0x0 (irq = 32, base_baud = 10800000) is a unknown
+[    1.669703] devtmpfs: create node [ttyS2] dev-name [(null)]
+[    1.675292] 1f221400.uart2: ttyS3 at MMIO 0x0 (irq = 33, base_baud = 10800000) is a unknown
+[    1.683672] devtmpfs: create node [ttyS3] dev-name [(null)]
+[    1.689790] [Core Voltage] check_voltage_valid: Not support 0mV, use 900mV
+[    1.696761] devtmpfs: create node [rtc0] dev-name [(null)]
+[    1.702287] ms_rtcpwc 1f006800.rtcpwc: rtc core: registered 1f006800.rtcpwc as rtc0
+[    1.710029] devtmpfs: create node [ms_rtcwc] dev-name [(null)]
+[    1.716321] devtmpfs: create node [watchdog] dev-name [(null)]
+[    1.722260] devtmpfs: create node [watchdog0] dev-name [(null)]
+[    1.728745] [ms_cpufreq_init] Current clk=1005326304
+[    1.734486] mstar_spinand_probe: mstar_spinand enableClock
+[    1.748775] MSYS: DMEM request: [BDMA]:0x00000840
+[    1.753382] MSYS: DMEM request: [BDMA]:0x00000840 success, CPU phy:@0x26448000, virt:@0xC6448000
+[    1.769181] MDrv_SPINAND_Init: Detected ID: MID =cd, DID =eb
+[    1.774681] _dumpNandInformation:warning, Bytes / Page :  2048
+[    1.780545] _dumpNandInformation:warning, Pages / Block:  64
+[    1.785462] ERROR: Bus[1] in ms_i2c_xfer_write: Slave dev NAK, Addr: 0xba, Data: 0x80 0x47  
+[    1.785474] Goodix-TS 1-005d: i2c test failed attempt 1: -110
+[    1.800468] _dumpNandInformation:warning, Sector/ Page :  512
+[    1.806188] _dumpNandInformation:warning, Spare / Page :  64
+[    1.811864] _dumpNandInformation:warning, Current config r:4 w:4 drv:1
+[    1.818596] mstar_spinand_probe: Magic memcmp pass
+[    1.823247] mstar_spinand_probe: Get partition (Block 0 : page 1)
+[    1.829558] mstar_spinand_probe: CIS contains part info
+[    1.834623] mstar_spinand_probe: Before nand_scan()...
+[    1.839821] 13 cmdlinepart partitions found on MTD device nand0
+[    1.845675] mstar_spinand_probe: Mtd parts parse
+[    1.850304] Creating 13 MTD partitions on "nand0":
+[    1.853064] ERROR: Bus[1] in ms_i2c_xfer_write: Slave dev NAK, Addr: 0xba, Data: 0x80 0x47  
+[    1.853074] Goodix-TS 1-005d: i2c test failed attempt 2: -110
+[    1.853164] ==20180309==> hub_port_init 1 #0
+[    1.853166] Plug in USB Port1
+[    1.876580] 0x000000140000-0x0000001a0000 : "IPL0"
+[    1.882250] devtmpfs: create node [mtd0] dev-name [(null)]
+[    1.887705] devtmpfs: create node [mtd0ro] dev-name [(null)]
+[    1.893767] devtmpfs: create node [mtdblock0] dev-name [(null)]
+[    1.898786] Goodix-TS 1-005d: I2C communication failure: -110
+[    1.898791] Goodix-TS 1-005d: touchscreen config failed!!!
+[    1.912004] 0x0000001a0000-0x000000200000 : "IPL1"
+[    1.917487] devtmpfs: create node [mtd1] dev-name [(null)]
+[    1.922949] devtmpfs: create node [mtd1ro] dev-name [(null)]
+[    1.939060] devtmpfs: create node [mtdblock1] dev-name [(null)]
+[    1.946059] 0x000000200000-0x000000260000 : "IPL_CUST0"
+[    1.952018] devtmpfs: create node [mtd2] dev-name [(null)]
+[    1.957451] devtmpfs: create node [mtd2ro] dev-name [(null)]
+[    1.979061] devtmpfs: create node [mtdblock2] dev-name [(null)]
+[    1.986049] 0x000000260000-0x0000002c0000 : "IPL_CUST1"
+[    1.991994] devtmpfs: create node [mtd3] dev-name [(null)]
+[    1.997426] devtmpfs: create node [mtd3ro] dev-name [(null)]
+[    2.019067] devtmpfs: create node [mtdblock3] dev-name [(null)]
+[    2.026051] 0x0000002c0000-0x000000380000 : "UBOOT0"
+[    2.032441] devtmpfs: create node [mtd4] dev-name [(null)]
+[    2.037873] devtmpfs: create node [mtd4ro] dev-name [(null)]
+[    2.038818] usb 2-1: new high-speed USB device number 2 using Sstar-ehci-1
+[    2.069079] devtmpfs: create node [mtdblock4] dev-name [(null)]
+[    2.076027] 0x000000380000-0x000000440000 : "UBOOT1"
+[    2.082413] devtmpfs: create node [mtd5] dev-name [(null)]
+[    2.087847] devtmpfs: create node [mtd5ro] dev-name [(null)]
+[    2.109063] devtmpfs: create node [mtdblock5] dev-name [(null)]
+[    2.116005] 0x000000440000-0x0000004a0000 : "ENV0"
+[    2.121522] devtmpfs: create node [mtd6] dev-name [(null)]
+[    2.126964] devtmpfs: create node [mtd6ro] dev-name [(null)]
+[    2.133095] devtmpfs: create node [mtdblock6] dev-name [(null)]
+[    2.140128] 0x0000004a0000-0x0000004c0000 : "KEY_CUST"
+[    2.145525] devtmpfs: create node [mtd7] dev-name [(null)]
+[    2.151404] devtmpfs: create node [mtd7ro] dev-name [(null)]
+[    2.169102] devtmpfs: create node [mtdblock7] dev-name [(null)]
+[    2.176068] 0x0000004c0000-0x000000520000 : "LOGO"
+[    2.181635] devtmpfs: create node [mtd8] dev-name [(null)]
+[    2.187116] devtmpfs: create node [mtd8ro] dev-name [(null)]
+[    2.193159] devtmpfs: create node [mtdblock8] dev-name [(null)]
+[    2.199971] 0x000000520000-0x000000580000 : "wtinfo"
+[    2.205649] devtmpfs: create node [mtd9] dev-name [(null)]
+[    2.211183] devtmpfs: create node [mtd9ro] dev-name [(null)]
+[    2.229064] devtmpfs: create node [mtdblock9] dev-name [(null)]
+[    2.242870] winfo: fac txt empty, use default.[    2.247974] 0x000000580000-0x000003580000 : "ubi"
+[    2.310376] usb 2-1: New USB device found, idVendor=1b20, idProduct=8888
+[    2.316925] usb 2-1: New USB device strings: Mfr=16, Product=32, SerialNumber=0
+[    2.339009] usb 2-1: Product: SigmaStarWIFI
+[    2.343032] usb 2-1: Manufacturer: SigmaStar inc
+[    2.347871] devtmpfs: create node [bus/usb/002/002] dev-name [(null)]
+[    2.360858] devtmpfs: create node [mtd10] dev-name [(null)]
+[    2.366447] devtmpfs: create node [mtd10ro] dev-name [(null)]
+[    2.389064] devtmpfs: create node [mtdblock10] dev-name [(null)]
+[    2.396094] 0x000003580000-0x000006580000 : "ubi2"
+[    2.485215] devtmpfs: create node [mtd11] dev-name [(null)]
+[    2.490770] devtmpfs: create node [mtd11ro] dev-name [(null)]
+[    2.496818] devtmpfs: create node [mtdblock11] dev-name [(null)]
+[    2.503895] 0x000006580000-0x000010000000 : "opt"
+[    2.779838] devtmpfs: create node [mtd12] dev-name [(null)]
+[    2.785370] devtmpfs: create node [mtd12ro] dev-name [(null)]
+[    2.791495] devtmpfs: create node [mtdblock12] dev-name [(null)]
+[    2.799565] NET: Registered protocol family 10
+[    2.819180] NET: Registered protocol family 17
+[    2.823947] ThumbEE CPU extension supported.
+[    2.828063] Registering SWP/SWPB emulation handler
+[    2.833518] devtmpfs: create node [ubi_ctrl] dev-name [(null)]
+[    2.839646] UBI: auto-attach mtd10
+[    2.842891] ubi0: attaching mtd10
+[    3.107019] ubi0: scanning is finished
+[    3.116540] devtmpfs: create node [ubi0] dev-name [(null)]
+[    3.122112] devtmpfs: create node [ubi0_0] dev-name [(null)]
+[    3.127777] devtmpfs: create node [ubi0_1] dev-name [(null)]
+[    3.133460] devtmpfs: create node [ubi0_2] dev-name [(null)]
+[    3.139200] ubi0: attached mtd10 (name "ubi", size 48 MiB)
+[    3.144529] ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[    3.151421] ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[    3.158193] ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+[    3.165168] ubi0: good PEBs: 384, bad PEBs: 0, corrupted PEBs: 0
+[    3.171196] ubi0: user volume: 3, internal volumes: 1, max. volumes count: 128
+[    3.178387] ubi0: max/mean erase counter: 9/4, WL threshold: 4096, image sequence number: 1768237934
+[    3.187537] ubi0: available PEBs: 0, total reserved PEBs: 384, PEBs reserved for bad PEB handling: 40
+[    3.196769] ubi0: background thread "ubi_bgt0d" started, PID 513
+[    3.209125] devtmpfs: create node [ubiblock0_1] dev-name [(null)]
+[    3.215477] block ubiblock0_1: created from ubi0:1(rootfs)
+[    3.220828] ubiblock: device ubiblock0_1 (rootfs) set to be root filesystem
+[    3.264523] ms_rtcpwc 1f006800.rtcpwc: setting system clock to 1970-01-01 04:44:18 UTC (17058)
+[    3.273258] OF: fdt:not creating '/sys/firmware/fdt': CRC check failed
+[    3.279952] prepare_namespace root_delay=0, cmd_root_dev []
+[    3.285369] VFS: under CONFIG_MTD_ROOTFS_ROOT_DEV to mount_ubi_rootfs
+[    3.292591] VFS: to do_mount_root [squashfs] from cmdlines rootfstype
+[    3.301246] VFS: Mounted root (squashfs filesystem) readonly on device 254:0.
+[    3.311454] devtmpfs: mounted to [dev]
+[    3.315064] This architecture does not have kernel memory protection.
+[    4.228541] init: Console is alive
+[    4.232034] init: - watchdog -
+[    4.487583] kmodloader: loading kernel modules from /etc/modules-boot.d/*
+[    4.550439] exfat: loading out-of-tree module taints kernel.
+[    4.557148] exFAT: Version 1.2.9
+[    4.564690] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
+[    4.578999] init: - preinit -
+[    4.836954] mount_root: loading kmods from internal overlay
+[    4.858225] kmodloader: loading kernel modules from //etc/modules-boot.d/*
+[    4.865518] kmodloader: done loading kernel modules from //etc/modules-boot.d/*
+[    5.058915] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" started, PID 546
+[    5.080232] random: procd: uninitialized urandom read (4 bytes read)
+[    5.086913] UBIFS (ubi0:2): recovery needed
+[    5.177057] UBIFS (ubi0:2): recovery completed
+[    5.181458] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+[    5.189193] UBIFS (ubi0:2): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[    5.199117] UBIFS (ubi0:2): FS size: 33394688 bytes (31 MiB, 263 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+[    5.209557] UBIFS (ubi0:2): reserved for root: 1577313 bytes (1540 KiB)
+[    5.216164] UBIFS (ubi0:2): media format: w4/r0 (latest is w4/r0), UUID DD5AA501-5448-4865-B412-546DC03BFBB9, small LPT model
+[    5.228384] block: attempting to load /tmp/ubifs_cfg/upper/etc/config/fstab
+[    5.238927] block: extroot: not configured
+[    5.288901] UBIFS (ubi0:2): un-mount UBI device 0
+[    5.293460] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" stops
+[    5.303167] UBIFS (ubi0:2): background thread "ubifs_bgt0_2" started, PID 549
+[    5.368893] UBIFS (ubi0:2): UBIFS: mounted UBI device 0, volume 2, name "rootfs_data"
+[    5.376578] UBIFS (ubi0:2): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[    5.386523] UBIFS (ubi0:2): FS size: 33394688 bytes (31 MiB, 263 LEBs), journal size 1650688 bytes (1 MiB, 13 LEBs)
+[    5.396960] UBIFS (ubi0:2): reserved for root: 1577313 bytes (1540 KiB)
+[    5.403572] UBIFS (ubi0:2): media format: w4/r0 (latest is w4/r0), UUID DD5AA501-5448-4865-B412-546DC03BFBB9, small LPT model
+[    5.526269] block: attempting to load /tmp/ubifs_cfg/upper/etc/config/fstab
+[    5.536300] block: extroot: not configured
+[    5.590457] mount_root: switching to ubifs overlay
+[    5.610829] urandom-seed: Seeding with /etc/urandom.seed
+[    5.671512] procd: - early -
+[    5.674317] procd: - watchdog -
+[    6.368973] procd: - watchdog -
+[    6.372238] procd: - ubus -
+[    6.423276] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.561761] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.579263] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.587194] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.594197] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.600629] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.606861] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.613767] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.620161] random: ubusd: uninitialized urandom read (4 bytes read)
+[    6.626712] procd: - init -
+Please press Enter to activate this console.
+[    6.808549] kmodloader: loading kernel modules from /etc/modules.d/*
+[    6.889237] devtmpfs: create node [zram0] dev-name [(null)]
+[    6.895089] zram: Added device: zram0
+[    6.933595] libphy: Fixed MDIO Bus: probed
+[    6.942669] MSYS: DMEM request: [emac0_buff]:0x00000812
+[    6.947962] MSYS: DMEM request: [emac0_buff]:0x00000812 success, CPU phy:@0x26449000, virt:@0xC6449000
+[    6.957640] devtmpfs: create node [emac0] dev-name [(null)]
+[    6.963390] libphy: mdio: probed
+[    6.966472] mdio_bus mdio-bus@emac0: /soc/emac0/mdio-bus@emac0/ethernet-phy@0 has invalid PHY address
+[    6.975936] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 0
+[    6.995792] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 1
+[    7.002355] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 2
+[    7.009049] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 3
+[    7.015534] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 4
+[    7.022209] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 5
+[    7.028802] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 6
+[    7.035379] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 7
+[    7.042030] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 8
+[    7.048612] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 9
+[    7.055264] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 10
+[    7.061957] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 11
+[    7.068624] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 12
+[    7.075419] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 13
+[    7.082054] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 14
+[    7.088729] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 15
+[    7.095478] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 16
+[    7.102175] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 17
+[    7.108858] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 18
+[    7.115539] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 19
+[    7.122311] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 20
+[    7.128961] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 21
+[    7.135644] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 22
+[    7.142392] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 23
+[    7.149079] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 24
+[    7.155750] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 25
+[    7.162483] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 26
+[    7.169182] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 27
+[    7.175854] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 28
+[    7.182589] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 29
+[    7.189284] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 30
+[    7.195957] mdio_bus mdio-bus@emac0: scan phy ethernet-phy at address 31
+[    7.202845] [emac_phy_connect][3220] connected mac emac0 to PHY at mdio-bus@emac0:00 [uid=11112222, driver=Generic PHY]
+[    7.214858] MSYS: DMEM request: [emac1_buff]:0x00060812
+[    7.220410] MSYS: DMEM request: [emac1_buff]:0x00060812 success, CPU phy:@0x26450000, virt:@0xC6450000
+[    7.230030] devtmpfs: create node [emac1] dev-name [(null)]
+[    7.235720] libphy: mdio: probed
+[    7.238926] mdio_bus mdio-bus@emac1: /soc/emac1/mdio-bus@emac1/ethernet-phy@1 has invalid PHY address
+[    7.248026] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 0
+[    7.267384] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 1
+[    7.287193] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 2
+[    7.306547] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 3
+[    7.326033] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 4
+[    7.346119] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 5
+[    7.367626] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 6
+[    7.390529] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 7
+[    7.410174] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 8
+[    7.430987] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 9
+[    7.450543] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 10
+[    7.470418] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 11
+[    7.489944] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 12
+[    7.509580] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 13
+[    7.529424] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 14
+[    7.548664] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 15
+[    7.568331] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 16
+[    7.588449] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 17
+[    7.607880] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 18
+[    7.627889] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 19
+[    7.648042] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 20
+[    7.667724] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 21
+[    7.687837] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 22
+[    7.707995] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 23
+[    7.728005] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 24
+[    7.747957] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 25
+[    7.768118] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 26
+[    7.788075] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 27
+[    7.808034] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 28
+[    7.827911] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 29
+[    7.847453] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 30
+[    7.867066] mdio_bus mdio-bus@emac1: scan phy ethernet-phy at address 31
+[    7.889230] [emac_phy_connect][3220] connected mac emac1 to PHY at mdio-bus@emac1:00 [uid=00000000, driver=Generic PHY]
+[    7.902325] >> [sdmmc] ms_sdmmc_probe 
+[    7.906668] [Padmux]reset Pad_51(reg 0x101e08; mask0x300) to GPIO(org: SDIO_MODE_1)
+[    7.915570] >> [sdmmc_0] Probe Platform Devices
+[    7.923623] nf_conntrack version 0.5.0 (2048 buckets, 8192 max)
+[    7.954677] usbcore: registered new interface driver usbserial
+[    7.960885] usbcore: registered new interface driver usbserial_generic
+[    7.967486] usbserial: USB Serial support registered for generic
+[    7.983695] xt_time: kernel timezone is -0000
+[    7.989380] ip_tables: (C) 2000-2006 Netfilter Core Team
+[    8.002352] PPP generic driver version 2.4.2
+[    8.006812] devtmpfs: create node [ppp] dev-name [(null)]
+[    8.017378] usbcore: registered new interface driver option
+[    8.023278] usbserial: USB Serial support registered for GSM modem (1-port)
+[    8.031881] kmodloader: done loading kernel modules from /etc/modules.d/*
+[    8.268897] phy: eth0 linkup
+[    8.793387] [ss_gpi_intc_domain_alloc] hw:40 -> v:57
+[    8.799195] [ss_gpi_intc_domain_alloc] hw:41 -> v:58
+[    8.816764] [ss_gpi_intc_domain_alloc] hw:39 -> v:59
+[    8.908936] phy: eth1 linkdown
+[    9.829772] [ss_gpi_intc_domain_alloc] hw:2 -> v:60
+[   10.123089] zram0: detected capacity change from 0 to 53477376
+[   11.173847] ubi1: attaching mtd12
+[   12.153058] ubi1: scanning is finished
+[   12.168731] devtmpfs: create node [ubi1] dev-name [(null)]
+[   12.174608] devtmpfs: create node [ubi1_0] dev-name [(null)]
+[   12.199341] ubi1: attached mtd12 (name "opt", size 154 MiB)
+[   12.204762] ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+[   12.211972] ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+[   12.218608] ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+[   12.225906] ubi1: good PEBs: 1236, bad PEBs: 0, corrupted PEBs: 0
+[   12.232934] ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+[   12.240819] ubi1: max/mean erase counter: 4/2, WL threshold: 4096, image sequence number: 1774918765
+[   12.250148] ubi1: available PEBs: 0, total reserved PEBs: 1236, PEBs reserved for bad PEB handling: 40
+[   12.259589] ubi1: background thread "ubi_bgt1d" started, PID 1821
+[   12.286366] br-lan: port 1(eth0) entered blocking state
+[   12.291520] br-lan: port 1(eth0) entered disabled state
+[   12.309183] device eth0 entered promiscuous mode
+[   12.315267] br-lan: port 1(eth0) entered blocking state
+[   12.320414] br-lan: port 1(eth0) entered forwarding state
+[   12.326315] IPv6: ADDRCONF(NETDEV_UP): br-lan: link is not ready
+[   12.348939] UBIFS (ubi1:0): background thread "ubifs_bgt1_0" started, PID 1842
+[   12.433845] UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "opt"
+[   12.441392] UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+[   12.454987] UBIFS (ubi1:0): FS size: 149958656 bytes (143 MiB, 1181 LEBs), journal size 7491584 bytes (7 MiB, 59 LEBs)
+[   12.470379] UBIFS (ubi1:0): reserved for root: 4952683 bytes (4836 KiB)
+[   12.476858] UBIFS (ubi1:0): media format: w4/r0 (latest is w4/r0), UUID 7CEDE5C0-A5F9-4922-A0C4-521D4CE8CA05, small LPT model
+[   13.308871] IPv6: ADDRCONF(NETDEV_CHANGE): br-lan: link becomes ready
+
+
+
+BusyBox v1.28.4 () built-in shell (ash)
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ OpenWrt 18.06-SNAPSHOT, 1.0.0
+ -----------------------------------------------------
+root@wireless-tag:/# 
+[  231.467640] devtmpfs: create node [cma_test] dev-name [(null)]
+[  231.473808] misc cma_test: registered.
+[  246.036712] cma: cma_alloc(cma c0435ef0, count 256, align 4)
+[  246.036862] cma: cma_alloc(): returned c63be800
+[  246.037376] misc cma_test: [0] alloc virt: c64c0000 phys: 264c0000

@@ -393,6 +393,7 @@ void __init mount_block_root(char *name, int flags)
 	get_fs_names(fs_names);
 retry:
 	for (p = fs_names; *p; p += strlen(p)+1) {
+		printk(KERN_NOTICE "VFS: to do_mount_root [%s] from cmdlines rootfstype\n", p);
 		int err = do_mount_root(name, p, flags, root_mount_data);
 		switch (err) {
 			case 0:
@@ -554,6 +555,7 @@ void __init mount_root(void)
 	}
 #endif
 #ifdef CONFIG_MTD_ROOTFS_ROOT_DEV
+	printk(KERN_NOTICE "VFS: under CONFIG_MTD_ROOTFS_ROOT_DEV to mount_ubi_rootfs\n");
 	if (!mount_ubi_rootfs())
 		return;
 #endif
@@ -574,6 +576,9 @@ void __init mount_root(void)
 void __init prepare_namespace(void)
 {
 	int is_floppy;
+
+	printk(KERN_INFO "prepare_namespace root_delay=%d, cmd_root_dev [%s]\n", 
+		root_delay, saved_root_name);
 
 	if (root_delay) {
 		printk(KERN_INFO "Waiting %d sec before mounting root device...\n",

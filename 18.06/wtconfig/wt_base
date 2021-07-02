@@ -41,3 +41,6 @@ CONFIG_PACKAGE_libwtinfo=y
 CONFIG_PACKAGE_libwtinfo-lua=y
 CONFIG_PACKAGE_wtinfo=y
 CONFIG_PACKAGE_liblvgl=y
+
+CONFIG_PACKAGE_vsftpd=y
+CONFIG_PACKAGE_wget=y

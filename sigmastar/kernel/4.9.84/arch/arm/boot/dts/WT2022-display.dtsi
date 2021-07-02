@@ -27,6 +27,7 @@
             vid_gpios = <PAD_SAR_GPIO1>;
             vid_voltages = <900 1000>;  //2b'00 2b'01
         };
+    
         i2c0@0{
             compatible = "sstar,i2c";
             reg = <0x1F223000 0x200>,<0x1F203c00 0x200>,<0x1F207000 0x200>;
@@ -78,7 +79,7 @@
               */
             i2c-speed = <3>;
             i2c-en-dma = <0>;  // 0: disable; 1: enable;
-            status = "ok";
+            status = "disabled";
             goodix_gt911@5D{ //EVB i2c-padmux=2 SSD201_SZ_DEMO_BOARD i2c-padmux=1
                 compatible = "goodix,gt911";
                 reg = <0x5D>;

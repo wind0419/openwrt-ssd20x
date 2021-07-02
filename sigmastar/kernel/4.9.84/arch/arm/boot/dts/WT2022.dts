@@ -21,7 +21,7 @@
 #include "WT2022-padmux-display.dtsi"
 
 / {
-    model = "INFINITY2M SSC011A-S01A-S By Wind";
+    model = "INFINITY2M SSC011A-S01A-S DoulETH By Wind";
     compatible = "sstar,infinity2m";
 
     /* memory setting will be replaced with LX_MEM*/
@@ -53,9 +53,8 @@
         compatible = "gpio-leds";
 
         status {
-            label = "led:status";
-            gpios = <&gpio 10 1>;
+            label = "system";
+            gpios = <&gpio 85 1>;
         };
     };
-
 };

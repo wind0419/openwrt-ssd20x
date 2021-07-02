@@ -78,7 +78,7 @@
               */
             i2c-speed = <3>;
             i2c-en-dma = <0>;  // 0: disable; 1: enable;
-            status = "ok";
+            status = "disabled";
             goodix_gt911@5D{ //EVB i2c-padmux=2 SSD201_SZ_DEMO_BOARD i2c-padmux=1
                 compatible = "goodix,gt911";
                 reg = <0x5D>;

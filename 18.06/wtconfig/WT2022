@@ -18,6 +18,7 @@ CONFIG_TARGET_UBIFS_FREE_SPACE_FIXUP=y
 wtinclude wt_sstar_kernel
 wtinclude wt_sstar_toolchain
 wtinclude wt_base
+wtinclude wt_leds
 wtinclude wt_sstar_emac
 wtinclude wt_sstar_mmc
 wtinclude wt_usb_storage

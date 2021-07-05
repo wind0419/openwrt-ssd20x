@@ -8,19 +8,43 @@
 sstar_setup_interfaces()
 {
 	local board="$1"
+	local lan_mac=""
+	local wan_mac=""
 
 	ucidef_set_interface_lan 'eth0'
 
 	case "$board" in
-	"WT2015")
+	"WT2022")
 		ucidef_set_interface_wan 'eth1'
 		;;
 	esac
 }
 
+sstar_setup_macs()
+{
+	local board="$1"
+	local lan_mac=""
+	local wan_mac=""
+
+	case "$board" in
+	"WT2022")
+		ucidef_set_interface_wan 'eth1'
+		# at this moment, eth0 is not running
+		lan_mac=$(cat /sys/class/net/eth0/address)
+		wan_mac=$(macaddr_add "$lan_mac" 1)
+		#fixed mac,fw_printenv is failed and hexdum ENV0 can NOU found lan_mac
+		wan_mac="00:86:88:00:00:02"
+		;;
+	esac
+
+	[ -n "$lan_mac" ] && ucidef_set_interface_macaddr "lan" $lan_mac
+	[ -n "$wan_mac" ] && ucidef_set_interface_macaddr "wan" $wan_mac
+}
+
 board_config_update
 board=$(sstar_board_name)
 sstar_setup_interfaces $board
+sstar_setup_macs $board
 board_config_flush
 
 exit 0

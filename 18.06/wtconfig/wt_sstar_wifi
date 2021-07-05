@@ -1,5 +1,5 @@
 CONFIG_PACKAGE_kmod-cfg80211-linux=y
-CONFIG_PACKAGE_sstar-wifi=y
+# CONFIG_PACKAGE_sstar-wifi=y
 CONFIG_PACKAGE_iwinfo=y
 CONFIG_PACKAGE_wireless-tools=y
 CONFIG_PACKAGE_hostapd=y

@@ -15,7 +15,7 @@ wtinfo_get_mac() {
 	if [ -n "$fac_mac" ]; then
 		echo -n "$fac_mac"
 	else
-		echo -n "00:86:88:00:00:00"
+		echo -n "00:86:88:00:00:01"
 	fi
 }
 

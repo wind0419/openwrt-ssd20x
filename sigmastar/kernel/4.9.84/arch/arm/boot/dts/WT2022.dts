@@ -55,6 +55,7 @@
         status {
             label = "system";
             gpios = <&gpio 85 1>;
+            linux,default-trigger = "timer";
         };
     };
 };

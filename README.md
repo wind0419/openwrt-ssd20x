@@ -76,9 +76,9 @@ make V=s -j4
 
 | 文件名                   | 说明                 |
 | ------------------------ | -------------------- |
-| WT2022-sysupgrade.bin    | 升级文件             |
-| WT2022-uImage.xz         | 内核文件             |
-| WT2022-root-ubi.img      | 根文件系统(SPI NAND) |
+| WT2022-sysupgrade.bin    | 升级文件  kernel+rootfs(overlay)  	  |
+| WT2022-uImage.xz         | 内核文件  kernel           	      |
+| WT2022-root-ubi.img      | 根文件系统(SPI NAND) rootfs(overlay) |
 
 
 # 升级--linux运行中
@@ -101,7 +101,6 @@ uboot下通过串口和网口进行升级（上电阶段按下enter按键），�
 setenv serverip 192.168.1.88
 setenv ipaddr 192.168.1.11
 setenv ethinitauto 1
-saveenv
 reset
 ```
 
@@ -116,6 +115,7 @@ reset
 tftp 0x21000000 WT2022-root-ubi.img
 nand erase.part ubi
 nand write.e 0x21000000 ubi ${filesize}
+reset
 ```
 
 ### U盘（FAT32文件系统）
@@ -125,6 +125,8 @@ nand write.e 0x21000000 ubi ${filesize}
 fatload usb 0 WT2022-root-ubi.img
 nand erase.part ubi
 nand write.e 0x21000000 ubi ${filesize}
+reset
+
 ```
 
 ### TF/SD卡（FAT32文件系统）
@@ -139,7 +141,7 @@ nand write.e 0x21000000 ubi ${filesize}
 
 ## 刷系统
 如果第一次系统不是openwrt系统，请再uboot下先使用以下命令刷机成openwrt系统,，然后使用上面步骤进行升级
-
+SSD202_openwrt.bin 从gitbub openwrt仓库的images中下载
 ### 网络
 
 ```

@@ -17,9 +17,6 @@
 
 / {
     soc {
-        core_voltage {
-            //vid_gpios = <PAD_FUART_CTS PAD_FUART_RTS>;
-        };
 /*
         sdmmc {
             compatible = "sstar,sdmmc";

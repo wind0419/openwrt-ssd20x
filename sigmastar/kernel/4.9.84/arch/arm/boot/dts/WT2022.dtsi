@@ -234,7 +234,7 @@
             clocks = <&CLK_uart1>;
             status = "ok";
         };
-        fuart: uart2@1F220400 {
+        fuart: uartf@1F220400 {
             compatible = "sstar,uart";
             //reg = <0x1F220400 0x100>, <0x1F220600 0x100>;
             //interrupts = <GIC_SPI INT_IRQ_FUART IRQ_TYPE_LEVEL_HIGH>, <GIC_SPI INT_IRQ_URDMA IRQ_TYPE_LEVEL_HIGH>;

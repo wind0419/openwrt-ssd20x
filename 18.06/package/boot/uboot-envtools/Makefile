@@ -62,22 +62,12 @@ define Build/Compile
 		envtools
 endef
 
-define Package/uboot-envtools/conffiles
-/etc/config/ubootenv
-/etc/fw_env.config
-endef
-
 define Package/uboot-envtools/install
-	$(INSTALL_DIR) $(1)/usr/sbin
+	$(INSTALL_DIR) $(1)/usr/sbin $(1)/etc
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/tools/env/fw_printenv $(1)/usr/sbin
 	$(LN) fw_printenv $(1)/usr/sbin/fw_setenv
-	$(INSTALL_DIR) $(1)/lib
-	$(INSTALL_DATA) ./files/uboot-envtools.sh $(1)/lib
-	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(if $(wildcard ./files/$(BOARD)), \
-		$(INSTALL_DATA) ./files/$(BOARD) \
-		$(1)/etc/uci-defaults/30_uboot-envtools \
-	)
+
+	$(INSTALL_DATA) ./files/sstar.config $(1)/etc/fw_env.config
 endef
 
 $(eval $(call BuildPackage,uboot-envtools))

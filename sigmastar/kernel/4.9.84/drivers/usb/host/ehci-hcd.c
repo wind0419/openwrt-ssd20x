@@ -1515,11 +1515,26 @@ MODULE_LICENSE ("GPL");
 #endif
 
 #if (MP_USB_MSTAR==1)
+
+#ifndef SLEEP_MILLI_SEC  
+#define SLEEP_MILLI_SEC(nMilliSec) \  
+    do { \  
+        long timeout = (nMilliSec) * HZ /1000; \  
+        while (timeout > 0) \  
+        { \  
+            timeout = schedule_timeout(timeout); \  
+        } \  
+    }while (0);  
+#endif  
+
 static int ehci_monitor_thread(void *data)
 {
 	printk(KERN_INFO "ehci monitor start running\n");
-	while(1)
+
+	while(!kthread_should_stop())
 	{
+		set_current_state(TASK_INTERRUPTIBLE);
+
 		if (ehci_monitor_status) {
 			#if _USB_VBUS_RESET_PATCH
 			gpio_direction_output(vbus_gpio, 1);
@@ -1540,7 +1555,8 @@ static int ehci_monitor_thread(void *data)
 				printk(KERN_EMERG "ehci_mstar_hcd null\n");
 			}
 		}
-		msleep(100);
+		SLEEP_MILLI_SEC(100);
+		//msleep(100);
 	}
 	return 0;
 }

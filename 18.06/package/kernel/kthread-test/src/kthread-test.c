@@ -55,6 +55,25 @@ kthread_test_write(struct file *file, const char __user *buf, size_t count, loff
     return count;
 }
 
+static int printPid(void)
+{
+    struct task_struct *task,*p;
+    struct list_head *ps;
+    int count=0;
+    int this_cpu = smp_processor_id();
+    task=&init_task;
+    WARN_ON(1);
+    printk(KERN_INFO "curent cpuid %d and pid %d:%s\n",this_cpu,current->pid,current->comm);
+    list_for_each(ps,&task->tasks)
+    {
+        p=list_entry(ps,struct task_struct,tasks);
+        count++;
+        printk(KERN_INFO "%d\t%s\n",p->pid,p->comm);
+    }
+    printk(KERN_INFO "Process counts:%d\n",count);
+    return 0;
+}
+
 static int ktest_thread(void *arg)
 {
     while(1) {
@@ -66,7 +85,8 @@ static int ktest_thread(void *arg)
         SLEEP_MILLI_SEC(5000);
         //msleep(5000);
         //mdelay(10);
-        //printk(KERN_INFO "ktest thread run %u\n", glb_counter);
+        printk(KERN_INFO "ktest thread run %u\n", glb_counter);
+        printPid();
     }
 
     return 0;

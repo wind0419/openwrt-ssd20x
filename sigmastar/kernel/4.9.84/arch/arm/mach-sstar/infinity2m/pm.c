@@ -25,13 +25,13 @@
 #define FOUT    printk(KERN_ERR"[%s]---\n",__FUNCTION__)
 #define HERE    printk(KERN_ERR"%s: %d\n",__FILE__,__LINE__)
 
-extern void infinity_suspend_imi(void);
+extern void sram_suspend_imi(void);
 static void (*mstar_suspend_imi_fn)(void);
 static void __iomem *suspend_imi_vbase;
 
 static int mstar_suspend_ready(unsigned long ret)
 {
-    mstar_suspend_imi_fn = fncpy(suspend_imi_vbase, (void*)&infinity_suspend_imi, 0x1000);
+    mstar_suspend_imi_fn = fncpy(suspend_imi_vbase, (void*)&sram_suspend_imi, 0x1000);
 
     //flush cache to ensure memory is updated before self-refresh
     __cpuc_flush_kern_all();

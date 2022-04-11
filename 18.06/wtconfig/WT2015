@@ -27,7 +27,7 @@ wtinclude wt_usb_storage
 # wtinclude wt_sstar_wifi
 wtinclude wt_liblvgl
 wtinclude wt_icplus_phy
-wtinclude wt_router
+# wtinclude wt_router
 
 CONFIG_PACKAGE_uboot-nand-sstar-WT2015=y
 

@@ -19,9 +19,10 @@
 #include "WT2022.dtsi"
 #include "WT2022-display.dtsi"
 #include "WT2022-padmux-display.dtsi"
+#include <dt-bindings/input/input.h>
 
 / {
-    model = "INFINITY2M SSC011A-S01A-S DoulETH By Wind";
+    model = "INFINITY2M SSC011A-S01A-S DoulETH By Wind wt2022-gpiokeys";
     compatible = "sstar,infinity2m";
 
     /* memory setting will be replaced with LX_MEM*/
@@ -57,5 +58,18 @@
             gpios = <&gpio 85 1>;
             linux,default-trigger = "timer";
         };
+    };
+
+    gpio-keys {
+		compatible = "gpio-keys";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		poll-interval = <20>;
+		
+		btn10 {
+			label = "BTN_0";
+			gpios = <&gpio 10 0>;
+			linux,code = <BTN_0>;
+		};
     };
 };

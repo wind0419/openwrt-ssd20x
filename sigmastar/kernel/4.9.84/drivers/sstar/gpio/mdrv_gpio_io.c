@@ -235,7 +235,7 @@ static int camdriver_gpio_probe(struct platform_device *pdev)
     GPIO_PRINT("--[camdriver-gpio]camdriver_gpio_probe end\n");
 
     MDrv_GPIO_Init();
-    printk(KERN_WARNING"GPIO: probe end");
+    printk(KERN_WARNING"GPIO: probe end\n");
     return 0;
 }
 

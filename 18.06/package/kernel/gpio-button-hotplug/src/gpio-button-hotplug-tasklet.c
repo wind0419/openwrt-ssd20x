@@ -73,6 +73,7 @@ struct gpio_keys_button_data {
 	int threshold;
 	int can_sleep;
 	struct gpio_keys_button *b;
+	struct tasklet_struct tklet;
 };
 
 extern u64 uevent_next_seqnum(void);
@@ -352,11 +353,18 @@ static void gpio_keys_polled_close(struct gpio_keys_button_dev *bdev)
 		pdata->disable(bdev->dev);
 }
 
+static void _tklet_handle(unsigned long data)
+{
+	struct gpio_keys_button_data *bdata = (struct gpio_keys_button_data *) data;
+	BH_DBG("tklet after HZ, gpio value %lu-'%d'\n", jiffies, gpio_button_get_value(bdata));;
+}
+
 static irqreturn_t button_handle_irq(int irq, void *_bdata)
 {
 	struct gpio_keys_button_data *bdata = (struct gpio_keys_button_data *) _bdata;
 
-	button_hotplug_event(bdata, bdata->b->type ?: EV_KEY, gpio_button_get_value(bdata));
+	tasklet_schedule(&bdata->tklet);
+//	button_hotplug_event(bdata, bdata->b->type ?: EV_KEY, gpio_button_get_value(bdata));
 
 	return IRQ_HANDLED;
 }
@@ -583,6 +591,8 @@ static int gpio_keys_probe(struct platform_device *pdev)
 			continue;
 		}
 
+		tasklet_init(&bdata->tklet, _tklet_handle, (unsigned long)bdata);
+
 		ret = devm_request_threaded_irq(&pdev->dev, button->irq, NULL, button_handle_irq,
 						IRQF_TRIGGER_FALLING | IRQF_ONESHOT, //,IRQF_TRIGGER_RISING
 						dev_name(&pdev->dev), bdata);
@@ -664,18 +674,18 @@ static int __init gpio_button_init(void)
 	ret = platform_driver_register(&gpio_keys_driver);
 	if (ret)
 		return ret;
-
+/*
 	ret = platform_driver_register(&gpio_keys_polled_driver);
 	if (ret)
 		platform_driver_unregister(&gpio_keys_driver);
-
+*/
 	return ret;
 }
 
 static void __exit gpio_button_exit(void)
 {
 	platform_driver_unregister(&gpio_keys_driver);
-	platform_driver_unregister(&gpio_keys_polled_driver);
+//	platform_driver_unregister(&gpio_keys_polled_driver);
 }
 
 module_init(gpio_button_init);
